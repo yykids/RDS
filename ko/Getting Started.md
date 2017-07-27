@@ -1,5 +1,7 @@
 ## Upcoming Products > RDS > Getting Started
 
+### DB 인스턴스 생성
+
 ![[그림 1] 초기 화면](http://static.toastoven.net/prod_rds/gs_001.png)
 <center>[그림 1] 초기 화면</center>
 
@@ -54,7 +56,9 @@
 ![[그림 7] DB 인스턴스 - 목록 조회 (생성 완료)](http://static.toastoven.net/prod_rds/gs_007.png)
 <center>[그림 7] DB 인스턴스 - 목록 조회 (생성 완료)</center>
 
-* DB 인스턴스의 생성이 완료 되면 [그림 7] 처럼 상태가 정상으로 변하게 됩니다.
+* DB 인스턴스의 생성이 완료 되면 <b>[그림 7]</b> 처럼 상태가 정상으로 변하게 됩니다.
+
+### DB 인스턴스 접속
 
 ![[그림 8] DB 인스턴스 - 상세 보기](http://static.toastoven.net/prod_rds/gs_008.png)
 <center>[그림 8] DB 인스턴스 - 상세 보기</center>
