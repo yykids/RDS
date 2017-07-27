@@ -23,9 +23,9 @@ TOAST Cloud Relational Database Service (RDS) 는 Relational Database 를 클라
 
 * 별도의 설치 과정없이 DB Instance 의 하드웨어 및 Database 의 상태를 모니터링할 수 있습니다. 이상 징후에 대해 알림을 설정함으로써 빠르게 대응할 수 있습니다.
 
-### 용어 설명
+## 용어 설명
 
-#### DB 인스턴스
+### DB 인스턴스
 
 * RDS 에서 제공하는 Relational Database 의 단위입니다.
 * DB 인스턴스는 가상 장비와 설치된 Relational Database 를 아우르는 개념입니다.
@@ -37,11 +37,11 @@ TOAST Cloud Relational Database Service (RDS) 는 Relational Database 를 클라
 * 만약 Compute & Network 상품을 이용 중이라면, DB 인스턴스 생성 시, 연결을 원하시는 subnet 을 설정 할 수 있습니다.
 * 연결된 subnet 에 있는 DB 인스턴스와 인스턴스 간에는 네트워크 연결이 활성화 됩니다.
 
-#### Availability Zone
+### Availability Zone
 
 * DB 인스턴스가 생성될 논리적인 구역을 의미합니다.
 
-#### Floating IP
+### Floating IP
 
 * 외부와 통신하기 위한 유동 IP 입니다.
 * Floating IP 가 연결된 DB 인스턴스의 Database 는 외부에서 접속이 가능합니다.
