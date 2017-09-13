@@ -1,6 +1,6 @@
 ## Upcoming Products > RDS > Release Notes
 
-### 2017.08.24
+### 2017.09.21
 
 #### 신규 상품 출시
 
