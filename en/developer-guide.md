@@ -1,4 +1,4 @@
-## Database > RDS for MySQL > 마이그레이션 가이드
+## Database > RDS for MySQL > 개발자 가이드
 
 ## Migration
 
