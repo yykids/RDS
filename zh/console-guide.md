@@ -1,6 +1,6 @@
 ## Database > RDS for MySQL > 콘솔 사용 가이드
 
-### 간단히 시작하기
+## 간단히 시작하기
 
 ![[그림 1] 초기 화면](http://static.toastoven.net/prod_rds/gs_001.png)
 <center>[그림 1] 초기 화면</center>
@@ -21,8 +21,7 @@
     * DB ID : Database 생성 시 만들어질 관리자 계정 아이디를 입력합니다.
     * DB Password : Database 생성 시 만들어질 관리자 계정 비밀번호를 입력합니다.
     * 네트워크 : DB 인스턴스와 네트워크 통신을 하시길 원하시는 Compute & Network 상품의 subnet 을 선택합니다.
-    * Floating IP : 토스트클라우드 외부 네트워크와 연결을 원하실 경우 Floating IP 를 선택합니다.
-        * 생성하신 Floating IP 가 없으시면 바로 생성이 가능합니다.
+    * Floating IP : 토스트클라우드 외부 네트워크와 연결을 원하실 경우 Floating IP 를 사용으로 설정합니다.
     * Flavor : DB 인스턴스의 사양을 선택합니다.
     * Storage : DB 인스턴스 볼륨의 크기를 입력합니다.
         * 20 GB ~ 600 GB 크기로 생성 할 수 있습니다.
@@ -67,12 +66,10 @@
 * Floating IP 가 연결되지 않은 DB 인스턴스는 외부에서 접근이 불가능합니다.
 * 외부에서 접속을 테스트하기 위해 우측 상단의 변경 버튼을 누릅니다.
 
-![[그림 9] DB 인스턴스 - Floating IP 생성 팝업](http://static.toastoven.net/prod_rds/gs_009.png)
-<center>[그림 9] DB 인스턴스 - Floating IP 생성 팝업</center>
-![[그림 10] DB 인스턴스 - Floating IP 생성 후](http://static.toastoven.net/prod_rds/gs_010.png)
-<center>[그림 10] DB 인스턴스 - Floating IP 생성 후</center>
+![[그림 9] DB 인스턴스 - Floating IP 변경](http://static.toastoven.net/prod_rds/gs_009.png)
+<center>[그림 9] DB 인스턴스 - Floating IP 변경</center>
 
-* 생성 버튼을 눌러 신규 Floating IP 를 생성합니다.
+* Floating IP 항목을 사용함으로 수정합니다.
 * 확인 버튼을 눌러 수정 사항을 반영합니다.
 
 ![[그림 11] MySQL Workbench 접속](http://static.toastoven.net/prod_rds/gs_011.png)
@@ -239,7 +236,7 @@
 ![[그림 9] 이벤트 &amp; 로그 -  error.log 파일 다운로드](http://static.toastoven.net/prod_rds/mt_009.png)
 <center>[그림 9] 이벤트 &amp; 로그 -  error.log 파일 다운로드</center>
 
-### 이벤트 로그
+## Event
 
 * RDS 는 DB 인스턴스에서 발생한 의미 있는 이벤트를 자동으로 남깁니다.
 * 특정 DB 인스턴스에서 발생한 이벤트를 보고 싶으면, DB 인스턴스를 선택한 후, 상세 설정 레이어의 Event & Log 탭에서 확인 할 수 있습니다.
@@ -249,14 +246,21 @@
 <center>[그림 10] 이벤트 &amp; 로그 -  목록 조회</center>
 
 * 이벤트 타입은 어떤 리소스에서 발생한 이벤트인지를 지칭합니다.
-    * FLOATING_IP : Floating IP 와 관련된 이벤트 입니다.
     * INSTANCE : DB 인스턴스와 관련된 이벤트 입니다.
     * BACKUP : 백업과 관련된 이벤트 입니다.
 * Identifier 는 이벤트가 발생한 리소스를 지칭합니다.
-    * 이벤트 타입이 FLOATING_IP 일 경우 IP 주소가 표시됩니다.
     * 이벤트 타입이 INSTANCE 일 경우 DB 인스턴스 이름이 표시됩니다.
     * 이벤트 타입이 BACKUP일 경우 백업 ID가 표시됩니다.
 
-## Event
 	
 ## Notification
+
+* RDS 는 원하는 리소스에서 발생하는 특정 이벤트에 대한 Notification을 수신그룹에 전달할 수 있습니다.
+* 원하는 Notification을 설정하기 위하여 Notification 탭을 선택한 후, 생성 버튼을 클릭합니다.
+
+![[그림 11] Notification 리스트 - 생성](http://static.toastoven.net/prod_rds/mt_010.png)
+<center>[그림 11] Notification - 생성</center>
+
+* 원하는 Notification의 이름을 입력하고, 알림 설정을 통해 설정하고자하는 이벤트와 리소스를 선택합니다.
+* 수신그룹 항목에서 원하는 수신그룹을 체크박스를 통하여 선택하거나 혹은 생성버튼을 통하여 수신그룹을 새롭게 지정합니다.
+* 생성 버튼을 클릭하여 Notificaion 생성을 완료합니다.
