@@ -1,6 +1,6 @@
 ## Database > RDS for MySQL > 콘솔 사용 가이드
 
-### 간단히 시작하기
+## 간단히 시작하기
 
 ![[그림 1] 초기 화면](http://static.toastoven.net/prod_rds/gs_001.png)
 <center>[그림 1] 초기 화면</center>
