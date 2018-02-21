@@ -72,8 +72,8 @@
 * Floating IP 항목을 사용함으로 수정합니다.
 * 확인 버튼을 눌러 수정 사항을 반영합니다.
 
-![[그림 11] MySQL Workbench 접속](http://static.toastoven.net/prod_rds/gs_011.png)
-<center>[그림 11] MySQL Workbench 접속</center>
+![[그림 10] MySQL Workbench 접속](http://static.toastoven.net/prod_rds/gs_010.png)
+<center>[그림 10] MySQL Workbench 접속</center>
 
 ## DB 인스턴스
 
@@ -242,8 +242,8 @@
 * 특정 DB 인스턴스에서 발생한 이벤트를 보고 싶으면, DB 인스턴스를 선택한 후, 상세 설정 레이어의 Event & Log 탭에서 확인 할 수 있습니다.
 * 내가 가진 모든 DB 인스턴스에서 발생한 이벤트를 한꺼번에 보려면, Events 탭으로 이동하여 조회 할 수 있습니다.
 
-![[그림 10] 이벤트 &amp; 로그 -  목록 조회](http://static.toastoven.net/prod_rds/mt_010.png)
-<center>[그림 10] 이벤트 &amp; 로그 -  목록 조회</center>
+![[그림 1] 이벤트 &amp; 로그 -  목록 조회](http://static.toastoven.net/prod_rds/ev_001.png)
+<center>[그림 1] 이벤트 &amp; 로그 -  목록 조회</center>
 
 * 이벤트 타입은 어떤 리소스에서 발생한 이벤트인지를 지칭합니다.
     * INSTANCE : DB 인스턴스와 관련된 이벤트 입니다.
@@ -258,8 +258,8 @@
 * RDS 는 원하는 리소스에서 발생하는 특정 이벤트에 대한 Notification을 수신그룹에 전달할 수 있습니다.
 * 원하는 Notification을 설정하기 위하여 Notification 탭을 선택한 후, 생성 버튼을 클릭합니다.
 
-![[그림 11] Notification 리스트 - 생성](http://static.toastoven.net/prod_rds/mt_010.png)
-<center>[그림 11] Notification - 생성</center>
+![[그림 1] Notification 리스트 - 생성](http://static.toastoven.net/prod_rds/nt_001.png)
+<center>[그림 1] Notification - 생성</center>
 
 * 원하는 Notification의 이름을 입력하고, 알림 설정을 통해 설정하고자하는 이벤트와 리소스를 선택합니다.
 * 수신그룹 항목에서 원하는 수신그룹을 체크박스를 통하여 선택하거나 혹은 생성버튼을 통하여 수신그룹을 새롭게 지정합니다.
