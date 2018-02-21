@@ -1,4 +1,4 @@
-## Database > RDS for MySQL > 릴리스 노트
+## Database > RDS for MySQL > Release Notes
 
 ### 2018.02.22
 

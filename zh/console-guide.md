@@ -1,4 +1,4 @@
-## Database > RDS for MySQL > 콘솔 사용 가이드
+## Database > RDS for MySQL > Console Guide
 
 ## 간단히 시작하기
 
