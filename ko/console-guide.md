@@ -115,6 +115,7 @@
 * 복원 시, 원본 DB 인스턴스를 변경하지 않고 새로운 DB 인스턴스를 생성합니다.
 * 백업의 저장 위치가 Object Storage 에 있을 경우, 시간이 더 소요됩니다.
 * 백업 중인 DB 인스턴스를 이용해서 복원을 할 수 없습니다.
+> [참고] 복원이 진행되는 동안 bin log file의 사이즈만큼의 Object Storage 사용량이 발생할 수 있습니다.
 
 ### 복제
 
@@ -128,6 +129,7 @@
 * 원본 DB 인스턴스와 동일한 사양 혹은 더 높은 사양으로 만드는 것을 권장하며, 낮은 사양으로 생성 시 복제 지연이 발생 할 수 있습니다.
 * 복재본 생성시, 원본 DB 인스턴스의 I/O 성능이 평소보다 낮아 질 수 있습니다.
 * 원본 DB 인스턴스의 크기에 비례하여 복제본 생성 시간이 늘어 날 수 있습니다.
+> [참고] 복제가 진행되는 동안 bin log file의 사이즈만큼의 Object Storage 사용량이 발생할 수 있습니다.
 
 #### 제약 사항
 
@@ -143,32 +145,36 @@
 
 ## Networks
 
-* Compute & Network 상품의 사용자 network를 RDS상품에 연결하여, RDS의 DB 인스턴스가 사용자의 인스턴스와 통신할 수 있습니다.
-* Networks 탭을 누르면 연결된 네트워크 리스트를 볼 수 있습니다.
+* Network 상품의 사용자 VPC를 RDS상품에 연결하여, RDS의 DB 인스턴스가 사용자의 VPC를 사용하는 인스턴스와 통신할 수 있습니다.
+* Networks 탭을 누르면 연결된 사용자의 VPC 리스트를 볼 수 있습니다.
 
 ![[그림 1] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_001.png)
 <center>[그림 1] 네트워크 화면</center>
 
-* 우선 Compute & Network 상품을 통해 연결하고자 하는 사용자 network와 subnet을 등록하고 해당 network와 subnet을 router에 등록하여야합니다.
-* Compute & Network 상품이 Enable 되어있지 않으면 연결 가능한 네트워크 항목이 표시되지 않습니다.
+* 우선 Network 상품을 통해 연결하고자 하는 사용자의 VPC와 서브넷을 생성하고하고 해당 원하는 VPC에 원하는 서브넷을 생성합니다.
+* Network 상품이 Enable 되어있지 않으면 연결 가능한 VPC 항목이 표시되지 않습니다.
 
 ![[그림 2] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_002-1.png)
+<center>[그림 2] VPC의 Management 탭 화면</center>
 ![[그림 3] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_002-2.png)
-<center>[그림 2] Compute & Network 상품의 network, router 화면</center>
+<center>[그림 3] VPC의 Subnets 탭 화면</center>
+
+> [참고] Network 상품의 VPC와 서브넷을 생성하여도, 해당 VPC를 사용하는 Instance가 없을 경우에는 연결 가능한 VPC 목록에서 생성한 VPC가 나타나지 않습니다.
+> [참고] 서브넷을 생성하지 않고 VPC만 생성할 경우 연결을 할 수 없습니다.
 
 * 연결하기를 원하는 네트워크를 선택하고 설명을 기입한 후 확인을 누릅니다.
 
 ![[그림 4] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_003-1.png)
 ![[그림 5] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_003-2.png)
-<center>[그림 3] network 연결 생성 화면</center>
+<center>[그림 4] VPC 연결 생성 화면</center>
 
 ![[그림 6] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_004.png)
-<center>[그림 4] network 연결 완료 화면</center>
+<center>[그림 5] VPC 연결 완료 화면</center>
 
-* 원하는 네트워크 연결을 선택한 후 삭제할 수 있습니다.
+* 원하는 VPC 연결을 선택한 후 삭제할 수 있습니다.
 
 ![[그림 7] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_005.png)
-<center>[그림 5] network 연결 삭제 화면</center>
+<center>[그림 6] VPC 연결 삭제 화면</center>
 
 ## Monitoring
 
@@ -201,6 +207,9 @@
 ![[그림 4] 모니터링 - 차트 간격](http://static.toastoven.net/prod_rds/mt_004.png)
 <center>[그림 4] 모니터링 - 차트 간격</center>
 
+> [참고] RDS DB 인스턴스별 모니터링 데이터는 사용자 DB 인스턴스의 'rds_maintenance'라는 database에 임시 저장 및 삭제됩니다. 따라서 생성한 뒤 아무 동작도 하지 않은 인스턴스임에도 몇몇 모니터링 항목들이 규칙적으로 움직이는 그래프 형태를 가질 수 있습니다. 
+> [참고] 만약 rds_maintenance database의 데이터를 조작할 경우, 정확하지 않은 모니터링 데이터가 수집될 수 있습니다.
+
 ### 항목
 
 * RDS 에서 지원하는 모니터링 항목은 다음과 같습니다.
@@ -231,7 +240,8 @@
 
 * 다운로드 버튼을 누르면 <b>[그림 8]</b> 처럼 팝업이 나타납니다.
 * 가져오기 버튼을 누른후 잠시 기다리시면, <b>[그림 9]</b> 처럼 다운로드 가능한 상태가 됩니다.
-* 로그 파일은 임시 Object Storage 에 업로드 되어 최대 5분 동안 유지됩니다.
+* 로그 파일은 임시 Object Storage 에 업로드 되어 최대 5분 동안 다운로드 할 수 있도록 유지됩니다.
+> [참고] Object Storage에 업로드 되고 삭제되는 5분간 Object Storage 사용 요금이 청구될 수 있습니다.
 
 ![[그림 9] 이벤트 &amp; 로그 -  error.log 파일 다운로드](http://static.toastoven.net/prod_rds/mt_009.png)
 <center>[그림 9] 이벤트 &amp; 로그 -  error.log 파일 다운로드</center>
@@ -264,3 +274,5 @@
 * 원하는 Notification의 이름을 입력하고, 알림 설정을 통해 설정하고자하는 이벤트와 리소스를 선택합니다.
 * 수신그룹 항목에서 원하는 수신그룹을 체크박스를 통하여 선택하거나 혹은 생성버튼을 통하여 수신그룹을 새롭게 지정합니다.
 * 생성 버튼을 클릭하여 Notificaion 생성을 완료합니다.
+
+> [참고] 수신그룹에서 원하는 대상에 체크박스를 선택하지 않으면 메일이나 SNS가 전달되지 않습니다.
