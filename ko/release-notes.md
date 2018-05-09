@@ -4,7 +4,6 @@
 
 #### 기능 개선
 
-* innodb_buffer_pool_size 과도하게 설정할 경우 경고메시지 출력
 * master의 port 변경 시, read only slave의 master 접속 정보 자동 변경
 * 백업 후, 불필요하게 남는 로그 삭제
 
