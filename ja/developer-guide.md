@@ -2,7 +2,7 @@
 
 ## Migration
 
-* RDS는 mysqldump를 이용하여 TOAST Cloud RDS 의 외부로 데이터로 내보나거나 외부로부터 가져올 수 있습니다.
+* RDS는 mysqldump를 이용하여 TOAST Cloud RDS 의 외부로 데이터로 내보내거나 외부로부터 가져올 수 있습니다.
 * mysqldump 유틸리티는 mysql을 설치했을 때 기본으로 제공됩니다.
 
 ### mysqldump를 이용하여 내보내기
