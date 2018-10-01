@@ -154,6 +154,15 @@
 * Binary Log 파일을 삭제하여 디스크 공간을 확보합니다.
 * 선택한 대상 Binary Log 파일과 그 이전에 생성된 Binary Log 파일 모두 삭제됩니다.
 
+### Storage 확장
+
+![[그림 3] Storage 확장](http://static.toastoven.net/prod_rds/se_001.png)
+<center>[그림 3] Storage 확장</center>
+
+* DB 인스턴스의 Storage 크기를 확장합니다.
+* Read Only Slave 가 존재하는 경우, Master 와 같은 Storage 크기로 함께 확장됩니다.
+* 대상 DB 인스턴스가 재시작 됩니다.
+
 ## Networks
 
 * Network 상품의 사용자 VPC를 RDS상품에 연결하여, RDS의 DB 인스턴스가 사용자의 VPC를 사용하는 인스턴스와 통신할 수 있습니다.
