@@ -1,5 +1,12 @@
 ## Database > RDS for MySQL > 릴리스 노트
 
+### 2018.10.23
+
+#### 기능 개선
+
+* 인스턴스 생성/복원/복제 시 입력 항목 설명문구 노출
+* mysql transaction_isolation 옵션 노출
+
 ### 2018.10.16
 
 #### 기능 추가
