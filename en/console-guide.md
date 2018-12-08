@@ -19,13 +19,15 @@
         * 10000 ~ 12000 사이로 설정할 수 있습니다.
     * DB ID : Database 생성 시 만들어질 관리자 계정 아이디를 입력합니다.
     * DB Password : Database 생성 시 만들어질 관리자 계정 비밀번호를 입력합니다.
-    * 네트워크 : DB 인스턴스와 네트워크 통신을 하시길 원하시는 Compute & Network 상품의 subnet 을 선택합니다.
+    * VPC Subnet : 생성할 DB 인스턴스와 private network 통신을 원하는 Compute & Network 상품의 subnet 을 선택합니다.
     * Floating IP : 토스트클라우드 외부 네트워크와 연결을 원하실 경우 Floating IP 를 사용으로 설정합니다.
     * Flavor : DB 인스턴스의 사양을 선택합니다.
     * Storage : DB 인스턴스 볼륨의 크기를 입력합니다.
         * 20 GB ~ 600 GB 크기로 생성 할 수 있습니다.
     * Availabillity Zone : DB 인스턴스가 생성 될 Zone 을 선택합니다.
-
+> [참고] 선택한 Compute & Network 상품의 VPC Subnet이 Internet Gateway와 연결이 되어있지 않다면, Floating IP를 사용할 수 없습니다.
+> [참고] 한번 선택한 VPC Subnet은 변경할 수 없습니다.
+	
 ![[그림 3] DB 인스턴스 - 백업 & Access 제어 화면](http://static.toastoven.net/prod_rds/gs_003.png)
 <center>[그림 3] DB 인스턴스 - 백업 & Access 제어 화면</center>
 
@@ -163,39 +165,6 @@
 * Read Only Slave 가 존재하는 경우, Master 와 같은 Storage 크기로 함께 확장됩니다.
 * 대상 DB 인스턴스가 재시작 됩니다.
 
-## Networks
-
-* Network 상품의 사용자 VPC를 RDS상품에 연결하여, RDS의 DB 인스턴스가 사용자의 VPC를 사용하는 인스턴스와 통신할 수 있습니다.
-* Networks 탭을 누르면 연결된 사용자의 VPC 리스트를 볼 수 있습니다.
-
-![[그림 1] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_001.png)
-<center>[그림 1] 네트워크 화면</center>
-
-* 우선 Network 상품을 통해 연결하고자 하는 사용자의 VPC와 서브넷을 생성하고하고 해당 원하는 VPC에 원하는 서브넷을 생성합니다.
-* Network 상품이 Enable 되어있지 않으면 연결 가능한 VPC 항목이 표시되지 않습니다.
-
-![[그림 2] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_002-1.png)
-<center>[그림 2] VPC의 Management 탭 화면</center>
-![[그림 3] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_002-2.png)
-<center>[그림 3] VPC의 Subnets 탭 화면</center>
-
-> [참고] Network 상품의 VPC와 서브넷을 생성하여도, 해당 VPC를 사용하는 Instance가 없을 경우에는 연결 가능한 VPC 목록에서 생성한 VPC가 나타나지 않습니다.
-> [참고] 서브넷을 생성하지 않고 VPC만 생성할 경우 연결할 수 없습니다.
-
-* 연결하기를 원하는 네트워크를 선택하고 설명을 기입한 후 확인을 누릅니다.
-
-![[그림 4] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_003-1.png)
-![[그림 5] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_003-2.png)
-<center>[그림 4] VPC 연결 생성 화면</center>
-
-![[그림 6] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_004.png)
-<center>[그림 5] VPC 연결 완료 화면</center>
-
-* 원하는 VPC 연결을 선택한 후 삭제할 수 있습니다.
-
-![[그림 7] 네트워크 화면](http://static.toastoven.net/prod_rds/nw_005.png)
-<center>[그림 6] VPC 연결 삭제 화면</center>
-
 ## Monitoring
 
 * RDS 는 DB 운영 및 사용에 필요한 모니터링 항목을 주기적으로 수집하고, 차트로 보여줍니다.
@@ -247,7 +216,7 @@
 
 * 단 반드시 DB Configuration 에서 해당 로그를 남기도록 설정을 해야 합니다.
 * 보기 버튼을 누르면 팝업이 열리며, 로그 파일을 볼 수 있습니다.
-* 로그 길이에 입력 된 라인수 만큼 볼 수 있으며, 50 ~ 1000 라인까지 볼 수 있습니다.
+* 로그 길이에 입력 된 라인수 만큼 볼 수 있으며, 끝에서부터 1MB 사이즈의 로그를 볼 수 있습니다.
 
 ![[그림 7] 이벤트 &amp; 로그 - error.log 파일 로그](http://static.toastoven.net/prod_rds/mt_007.png)
 <center>[그림 7] 이벤트 &amp; 로그 - error.log 파일 로그</center>
