@@ -5,6 +5,8 @@ TOAST Cloud Relational Database Service (RDS) 는 Relational Database 를 클라
 
 ## 특징 및 기능 
 
+* RDS for MySQL은 사용자의 Compute & Network 상품을 활성화해야만 사용할 수 있습니다.
+
 ### DB 인스턴스
 
 * 원하는 즉시 생성할 수 있는 Database 서버입니다.
@@ -26,9 +28,9 @@ TOAST Cloud Relational Database Service (RDS) 는 Relational Database 를 클라
 * DB 인스턴스는 가상 장비와 설치된 Relational Database 를 아우르는 개념입니다.
 * TOAST Cloud 의 Compute & Network 상품에서 제공하는 모든 사양의 가상 장비로 DB 인스턴스를 생성 할 수 있습니다.
 * DB 인스턴스는 최소 20 GB ~ 600 GB 크기의 HDD 스토리지를 지원합니다.
-* 더 나은 성능을 원하면 Fusion I/O 사양의 가상장비를 선택 할 수 있습니다.
 * DB 인스턴스의 운영체제에 직접 접근 할 수 없으며, 오직 DB 인스턴스 생성 시 입력하신 port 를 통해서 Database 로만 접근 할 수 있습니다.
-* DB 인스턴스는 외부 네트워크와 단절되어 있습니다. 외부에서 연결을 원하면 Floating IP 를 붙여야 합니다.
+* DB 인스턴스는 사용자의 Compute & Network 상품의 VPC Subnet을 선택해야만 생성할 수 있으며, 이를 통하여 사용자의 Compute & Network 상품의 Instance들과 통신이 가능합니다.
+* DB 인스턴스는 사용자의 Subnet 이외의 외부 네트워크와 단절되어 있습니다. 외부에서 연결을 원하면 Floating IP 를 붙여야 합니다.
 * 만약 Compute & Network 상품을 이용 중이라면, DB 인스턴스 생성 시, 연결을 원하시는 subnet 을 설정 할 수 있습니다.
 * 연결된 subnet 에 있는 DB 인스턴스와 인스턴스 간에는 네트워크 연결이 활성화 됩니다.
 
@@ -39,5 +41,6 @@ TOAST Cloud Relational Database Service (RDS) 는 Relational Database 를 클라
 ### Floating IP
 
 * 외부와 통신하기 위한 유동 IP 입니다.
+* Floating IP는 설정하고자 하는 DB 인스턴스와 연결된 사용자 VPC Subnet에 Internet Gateway가 연결되어 있어야 사용이 가능합니다.
 * Floating IP 가 연결된 DB 인스턴스의 Database 는 외부에서 접속이 가능합니다.
 * Floating IP 는 생성하는 즉시 DB 인스턴스와는 별도로 요금이 부과됩니다.
