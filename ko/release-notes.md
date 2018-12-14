@@ -1,5 +1,13 @@
 ## Database > RDS for MySQL > 릴리스 노트
 
+### 2018.12.14
+
+#### 버그 수정
+
+* r2.c8m64 flavor 미노출 수정
+* general log 안보이는 현상 수정
+* VPC Subnet 선택 버그 수정
+
 ### 2018.12.11
 
 #### 기능 개선
