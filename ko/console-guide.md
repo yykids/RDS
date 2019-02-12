@@ -18,8 +18,11 @@
     * VPC Subnet : 생성할 DB 인스턴스와 private network 통신을 원하는 Compute & Network 상품의 subnet 을 선택합니다.
     * Floating IP : 토스트클라우드 외부 네트워크와 연결을 원하실 경우 Floating IP 를 사용으로 설정합니다.
     * Flavor : DB 인스턴스의 사양을 선택합니다.
+    * Storage 타입: DB 인스턴스 볼륨의 타입을 지정합니다.
+      * HDD 및 SSD를 선택할 수 있습니다.
+      * u2 인스턴스는 SSD를 선택할 수 없습니다.
     * Storage : DB 인스턴스 볼륨의 크기를 입력합니다.
-        * 20 GB ~ 600 GB 크기로 생성 할 수 있습니다.
+        * 20 GB ~ 1,000 GB 크기로 생성 할 수 있습니다.
     * Availabillity Zone : DB 인스턴스가 생성 될 Zone 을 선택합니다.
 > [참고] 선택한 Compute & Network 상품의 VPC Subnet이 Internet Gateway와 연결이 되어있지 않다면, Floating IP를 사용할 수 없습니다.
 > [참고] 한번 선택한 VPC Subnet은 변경할 수 없습니다.
