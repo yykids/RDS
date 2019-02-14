@@ -20,7 +20,6 @@
     * Flavor : DB 인스턴스의 사양을 선택합니다.
     * Storage 타입: DB 인스턴스 볼륨의 타입을 지정합니다.
       * HDD 및 SSD를 선택할 수 있습니다.
-      * u2 인스턴스는 SSD를 선택할 수 없습니다.
     * Storage : DB 인스턴스 볼륨의 크기를 입력합니다.
         * 20 GB ~ 1,000 GB 크기로 생성 할 수 있습니다.
     * Availabillity Zone : DB 인스턴스가 생성 될 Zone 을 선택합니다.
