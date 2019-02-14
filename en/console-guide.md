@@ -25,6 +25,7 @@
     * Availabillity Zone : DB 인스턴스가 생성 될 Zone 을 선택합니다.
 > [참고] 선택한 Compute & Network 상품의 VPC Subnet이 Internet Gateway와 연결이 되어있지 않다면, Floating IP를 사용할 수 없습니다.
 > [참고] 한번 선택한 VPC Subnet은 변경할 수 없습니다.
+> [참고] U 타입 사양의 인스턴스들은 Flavor를 변경할 수 없습니다.
 
 ![rds_02_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_02_201812_en.png)
 
