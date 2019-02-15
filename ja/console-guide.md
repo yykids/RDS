@@ -19,7 +19,7 @@ RDS for MysQLを使用するには、先にDBインスタンスを作成する�
     * Floating IP：TOASTクラウド外部ネットワークと接続する場合、Floating IPを使用に設定します。
     * Flavor：DBインスタンスのタイプを選択します。
     * Storage 타입: DB 인스턴스 볼륨의 타입을 지정합니다.
-      * HDD 및 SSD를 선택할 수 있습니다.
+        * HDD 및 SSD를 선택할 수 있습니다.
     * Storage：DBインスタンスボリュームのサイズを入力します。 20GB～1,000GBのサイズで作成できます。
     * Availabillity Zone：DBインスタンスが作成される領域を選択します。
 > [参考]選択したCompute & NetworkサービスのVPCサブネットがインターネットゲートウェイと接続されていない場合、Floating IPを使用できません。
