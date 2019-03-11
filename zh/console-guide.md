@@ -5,7 +5,7 @@
 * 가장 먼저 해야 할 일은 DB 인스턴스를 생성하는 일입니다.
 * **Console > Database > RDS for MySQL**의 **DB Instance**탭에서 좌측 상단 **+ 생성** 버튼을 누르시면 그림과 같이 페이지 하단에 생성 레이어가 표시됩니다.
 
-![rds_01_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_01_201812_zh.png)
+![rds_01_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_01_201812_zh.png)
 
 * 설정 레이어에 표시된 필수 항목을 모두 입력하신 후, 레이어 우측 상단의 **다음** 버튼을 눌러주세요.
     * DB Instance : DB 인스턴스 이름을 입력합니다.
@@ -27,7 +27,7 @@
 > [참고] 한번 선택한 VPC Subnet은 변경할 수 없습니다.
 > [참고] U 타입 사양의 인스턴스들은 Flavor를 변경할 수 없습니다.
 
-![rds_02_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_02_201812_zh.png)
+![rds_02_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_02_201812_zh.png)
 
 * 자동 백업 및 접근 제어 설정을 한 후, **다음** 버튼을 누릅니다.
 * 백업 보관 기간: 자동 백업을 하려면 1일 이상 선택합니다.
@@ -38,7 +38,7 @@
 * 사용자 접근 제어: DB 인스턴스에 접근 가능한 사용자를 CIDR 형식으로 입력합니다.
     * 사용자 접근 제어에 등록되지 않은 IP 는 접속이 불가능합니다.
 
-![rds_03_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_03_201812_zh.png)
+![rds_03_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_03_201812_zh.png)
 
 * 변경 하고자 하는 설정 값을 변경 후, **생성** 버튼을 누릅니다.
 * 최종적으로 **확인** 버튼을 누르면, DB 인스턴스가 생성됩니다.
@@ -49,17 +49,17 @@
 * 생성된 DB 인스턴스를 선택하면 상세 설정을 확인 할 수 있습니다.
 * Floating IP 가 연결되지 않은 DB 인스턴스는 외부에서 접근이 불가능합니다.
 
-![rds_04_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_04_201812_zh.png)
+![rds_04_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_04_201812_zh.png)
 
 * 외부에서 접속을 테스트하기 위해 우측 상단의 **변경** 버튼을 누릅니다.
 * Floating IP 항목을 **사용함**으로 수정합니다.
 * **확인** 버튼을 눌러 수정 사항을 반영합니다.
 
-![rds_05_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_05_201812_zh.png)
+![rds_05_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_05_201812_zh.png)
 
 * 설정 후 Floating IP가 생성되어 외부에서 접근이 가능해진것을 확인할 수 있습니다.
 
-![rds_06_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_06_201812_zh.png)
+![rds_06_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_06_201812_zh.png)
 
 * MySQL Workbench 접속 예시입니다.
 
@@ -110,7 +110,7 @@
 * 읽기 성능을 높이기 위해서 MySQL 이 지원하는 Read Only Slave 를 만들 수 있습니다.
 * Read Only Slave 를 만들기 위해서 원본 DB 인스턴스를 선택한 후 **추가기능 > 복제본 생성**을 누릅니다.
 
-![rds_07_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_07_201812_zh.png)
+![rds_07_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_07_201812_zh.png)
 
 * 복제본 생성을 위한 설정을 입력한 후, **복제** 버튼을 누르면 복제본이 생성됩니다.
 * 원본 DB 인스턴스와 동일한 사양 혹은 더 높은 사양으로 만드는 것을 권장하며, 낮은 사양으로 생성 시 복제 지연이 발생할 수 있습니다.
@@ -136,7 +136,7 @@
 
 #### Binary Log 삭제
 
-![rds_08_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_08_201812_zh.png)
+![rds_08_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_08_201812_zh.png)
 
 * Binary Log 파일을 삭제하여 디스크 공간을 확보합니다.
 
@@ -145,7 +145,7 @@
 
 ### Storage 확장
 
-![rds_09_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_09_201812_zh.png)
+![rds_09_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_09_201812_zh.png)
 
 * DB 인스턴스의 Storage 크기를 확장합니다.
 * Read Only Slave 가 존재하는 경우, Master 와 같은 Storage 크기로 함께 확장됩니다.
@@ -156,12 +156,12 @@
 * RDS 는 DB 운영 및 사용에 필요한 모니터링 항목을 주기적으로 수집하고, 차트로 보여줍니다.
 * 특정 DB 인스턴스의 모니터링 항목이 보고 싶을 경우, **DB Instance** 목록에서 특정 DB 인스턴스를 선택 한 후, **Monitoring** 탭을 선택합니다.
 
-![rds_10_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_10_201812_zh.png)
+![rds_10_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_10_201812_zh.png)
 
 * 전체 DB 인스턴스의 모니터링 항목이 보고 싶은 경우에는, Monitoring 탭으로 들어가신 후 보고자 하는 DB 인스턴스를 선택 후 **추가** 버튼을 누릅니다.
 * 차트 범위, 간격, 종류 및 항목을 변경 시, 변경 사항이 추가된 모든 DB 인스턴스에 영향을 줍니다.
 
-![rds_11_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_11_201812_zh.png)
+![rds_11_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_11_201812_zh.png)
 
 * 차트의 범위를 쉽게 조정할 수 있게 유틸성 버튼을 제공합니다.
 * 1시간, 6시간 등의 버튼을 누를 때마다, 현재 시각을 기준으로 자동으로 from ~ to 를 계산하여 갱신합니다.
@@ -181,24 +181,24 @@
 
 * RDS 에서 지원하는 모니터링 항목은 다음과 같습니다.
 
-![rds_12_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_12_201812_zh.png)
+![rds_12_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_12_201812_zh.png)
 
 ### 로그 파일
 
 * DB 인스턴스에 접속하지 않고 편하게 로그파일을 보거나 다운로드 받을 수 있습니다.
 * **DB Instance** 를 선택한 후, **Events & Log** 탭을 누르면 error.log, slow_query.log, general.log 파일을 볼 수 있습니다.
 
-![rds_13_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_13_201812_zh.png)
+![rds_13_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_13_201812_zh.png)
 
 * 단 반드시 DB Configuration 에서 해당 로그를 남기도록 설정을 해야 합니다.
 * **보기** 버튼을 누르면 팝업이 열리며, 로그 파일을 볼 수 있습니다.
 * 로그 길이에 입력 된 라인수 만큼 볼 수 있으며, 끝에서부터 1MB 사이즈의 로그를 볼 수 있습니다.
 
-![rds_14_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_14_201812_zh.png)
+![rds_14_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_14_201812_zh.png)
 
 * 로그 파일 전체를 보고 싶다면, **다운로드** 버튼을 눌러 직접 파일을 다운로드 받아야 합니다.
 
-![rds_15_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_15_201812_zh.png)
+![rds_15_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_15_201812_zh.png)
 
 * **다운로드** 버튼을 누르면 팝업이 나타납니다.
 * **가져오기** 버튼을 누른후 잠시 기다리면, **다운로드** 버튼이 활성화 되어 다운로드 가능한 상태가 됩니다.
@@ -212,7 +212,7 @@
 * 특정 DB 인스턴스에서 발생한 이벤트를 보고 싶으면, DB 인스턴스를 선택한 후, 상세 설정 레이어의 Event & Log 탭에서 확인할 수 있습니다.
 * 내가 가진 모든 DB 인스턴스에서 발생한 이벤트를 한꺼번에 보려면, **Event** 탭으로 이동하여 조회할 수 있습니다.
 
-![rds_16_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_16_201812_zh.png)
+![rds_16_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_16_201812_zh.png)
 
 * 이벤트 타입은 어떤 리소스에서 발생한 이벤트인지를 지칭합니다.
     * INSTANCE : DB 인스턴스와 관련된 이벤트 입니다.
@@ -225,7 +225,7 @@
 
 * RDS 는 원하는 리소스에서 발생하는 특정 이벤트에 대한 Notification을 수신그룹에 전달할 수 있습니다.
 
-![rds_17_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_17_201812_zh.png)
+![rds_17_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_17_201812_zh.png)
 
 1. 원하는 Notification을 설정하기 위하여 **Notification** 탭을 선택한 후, **생성** 버튼을 클릭합니다.
 2. 원하는 Notification의 이름을 입력하고, 알림 설정을 통해 설정하고자하는 이벤트와 리소스를 선택합니다.
@@ -238,6 +238,6 @@
 
 설정한 조건을 만족 시 수신 대상에 입력한 메일주소와 전화번호로 알림을 받을 수 있습니다.
 
-![rds_18_201812](https://static.toastoven.net/prod_rds/19.01.29/rds_18_201812_zh.png)
+![rds_18_201812](https://static.toastoven.net/prod_rds/19.03.12/rds_18_201812_zh.png)
 
 > [참고] 수신그룹에서 원하는 대상에 체크박스를 선택하지 않으면 메일이나 SMS가 전달되지 않습니다.
