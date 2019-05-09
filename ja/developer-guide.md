@@ -1,4 +1,4 @@
-﻿## Database > RDS for MySQL > 開発者ガイド
+## Database > RDS for MySQL > 開発者ガイド
 
 ## マイグレーション
 
