@@ -1,4 +1,4 @@
-﻿## Database > RDS for MySQL > コンソール使用ガイド
+## Database > RDS for MySQL > コンソール使用ガイド
 
 ## 開始する
 
