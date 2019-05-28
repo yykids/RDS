@@ -1,16 +1,16 @@
-## Database > RDS for MySQL > 릴리스 노트
+## Database > RDS for MySQL > Release Notes
 
-### 2019.05.14
+### May 14, 2019
 
-#### 기능 개선
+#### Updates 
 
-- 인스턴스 생성 및 수정 시, 검증 기능 강화
-- Notification 알림 이벤트를 전체 선택/해제 할 수 있는 UX 추가
+- Stronger authentication when instance is created or modified   
+- Added UX to select/unselect all notification events 
 
-#### 버그 수정
+#### Bug Fixes 
 
-- 생성 중인 인스턴스를 삭제 시, 간헐적으로 삭제가 되지 않았던 문제 수정
-- 데이터 저장소가 가득 찼을 때, 간헐적으로 데이터 볼륨이 변경되지 않았던 문제 수정
+- Fixed instances, which were sometimes unavailable to be deleted while they were being created  
+- Fixed the issue in which data volume was not properly changed when data storage was full 
 
 ### 2019.03.12
 
