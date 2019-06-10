@@ -28,6 +28,7 @@
 > [참고] 한번 선택한 VPC Subnet은 변경할 수 없습니다.
 > [참고] U 타입 사양의 인스턴스들은 인스턴스 타입을 변경할 수 없습니다.
 > [참고] Candidate Master 인스턴스는 반드시 Master와 서로 다른 Availability Zone에 생성되며, 리스트에서 보이지 않습니다.
+> [참고] 인스턴스 리스트는 각 인스턴스의 생성 순서대로 정렬되며, candidate master는 master의 고가용성 옵션 사용 시점에 생성되기 때문에 장애조치 이후 인스턴스의 순서가 바뀔 수 있습니다.
 
 ![rds_02_20190611](https://static.toastoven.net/prod_rds/19.06.11/rds_02_20190611.png)
 
