@@ -1,5 +1,20 @@
 ## Database > RDS for MySQL > Release Notes
 
+### June 25, 2019
+
+#### More Features
+
+- High Availability added
+- Japan Region added
+
+#### Updates
+
+- Event period exposed on the page of instance details changed from 1 day to 7 days
+
+#### Bug Fixes
+
+- Point-in-time recovery is available from when restoration is possible.
+
 ### May 14, 2019
 
 #### Updates 
