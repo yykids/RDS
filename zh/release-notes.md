@@ -5,7 +5,6 @@
 #### More Features
 
 - High Availability added
-- Japan Region added
 
 #### Updates
 
