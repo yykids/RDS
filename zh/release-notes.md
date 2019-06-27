@@ -1,5 +1,11 @@
 ## Database > RDS for MySQL > Release Notes
 
+### June 27, 2019
+
+#### More Features
+
+- Japan Region added
+
 ### June 25, 2019
 
 #### More Features
