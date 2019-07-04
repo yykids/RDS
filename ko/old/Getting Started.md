@@ -75,5 +75,5 @@
 * 생성 버튼을 눌러 신규 Floating IP 를 생성합니다.
 * 확인 버튼을 눌러 수정 사항을 반영합니다.
 
-![[그림 11] MySQL Workbench 접속](http://static.toastoven.net/prod_rds/gs_011.png)
-<center>[그림 11] MySQL Workbench 접속</center>
+![[그림 10] MySQL Workbench 접속](http://static.toastoven.net/prod_rds/gs_010.png)
+<center>[그림 10] MySQL Workbench 접속</center>
