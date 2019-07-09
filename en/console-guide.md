@@ -30,7 +30,7 @@
 > [참고] U 타입 사양의 인스턴스들은 인스턴스 타입을 변경할 수 없습니다.
 > [참고] Candidate Master 인스턴스는 반드시 Master와 서로 다른 Availability Zone에 생성되며, 리스트에서 보이지 않습니다.
 > [참고] 인스턴스 리스트는 각 인스턴스의 생성 순서대로 정렬되며, candidate master는 master의 고가용성 옵션 사용 시점에 생성되기 때문에 장애조치 이후 인스턴스의 순서가 바뀔 수 있습니다.
-> [참고] 기본 알람 사용시 해당 인스턴스에 대한 Notification이 자동 등록되며, 이름은 "{인스턴스 이름}-default"로 설정됩니다.
+> [참고] 기본 알람 사용시 해당 인스턴스에 대한 Notification이 자동 등록되며, 이름은 "{인스턴스 이름}-default"로 설정됩니다. 등록되는 Notification은 변경 및 삭제할 수 있으며, 적용되는 인스턴스도 변경할 수 있습니다.
 
 ![rds_02_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_02_20190312_en.png)
 
