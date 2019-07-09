@@ -1,5 +1,11 @@
 ## Database > RDS for MySQL > Release Notes
 
+### July 23, 2019
+
+#### More Features
+
+- 기본 알람 기능 추가
+
 ### June 27, 2019
 
 #### More Features
