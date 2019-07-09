@@ -26,6 +26,7 @@
     * 고가용성 : DB 인스턴스를 생성할 때, Master와 서로 다른 Availability Zone에 Candidate Master를 생성합니다.
     * 기본 알람: DB 인스턴스의 이벤트들 중 미리 정의된 이벤트에 대한 Notification을 등록할 수 있습니다.
         * 기본 알람 사용시, 수신 그룹을 선택해야 합니다.
+
 > [참고] 선택한 Compute & Network 상품의 VPC Subnet이 Internet Gateway와 연결이 되어있지 않다면, Floating IP를 사용할 수 없습니다.
 > [참고] 한번 선택한 VPC Subnet은 변경할 수 없습니다.
 > [참고] U 타입 사양의 인스턴스들은 인스턴스 타입을 변경할 수 없습니다.
