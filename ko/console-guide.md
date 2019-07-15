@@ -24,15 +24,15 @@
         * 20GB~1,000GB 크기로 생성할 수 있습니다.
     * Availabillity Zone : DB 인스턴스가 생성 될 Zone 을 선택합니다.
     * 고가용성 : DB 인스턴스를 생성할 때, Master와 서로 다른 Availability Zone에 Candidate Master를 생성합니다.
-    * 기본 알람: DB 인스턴스의 이벤트들 중 미리 정의된 이벤트에 대한 Notification을 등록할 수 있습니다.
-        * 기본 알람 사용시, 수신 그룹을 선택해야 합니다.
+    * 기본 알람: DB 인스턴스의 이벤트들 중 미리 정의된 이벤트에 대한 알람을 등록할 수 있습니다.
+        * 기본 알람 사용 시 수신 그룹을 선택해야 합니다.
 
 > [참고] 선택한 Compute & Network 상품의 VPC Subnet이 Internet Gateway와 연결이 되어있지 않다면, Floating IP를 사용할 수 없습니다.
 > [참고] 한번 선택한 VPC Subnet은 변경할 수 없습니다.
 > [참고] U 타입 사양의 인스턴스들은 인스턴스 타입을 변경할 수 없습니다.
 > [참고] Candidate Master 인스턴스는 반드시 Master와 서로 다른 Availability Zone에 생성되며, 리스트에서 보이지 않습니다.
 > [참고] 인스턴스 리스트는 각 인스턴스의 생성 순서대로 정렬되며, candidate master는 master의 고가용성 옵션 사용 시점에 생성되기 때문에 장애조치 이후 인스턴스의 순서가 바뀔 수 있습니다.
-> [참고] 기본 알람 사용시 해당 인스턴스에 대한 Notification이 자동 등록되며, 이름은 "{인스턴스 이름}-default"로 설정됩니다. 등록되는 Notification은 변경 및 삭제할 수 있으며, 적용되는 인스턴스도 변경할 수 있습니다.
+> [참고] 기본 알람 사용 시 해당 인스턴스에 대한 알람이 자동 등록되며, 이름은 "{인스턴스 이름}-default"로 설정됩니다. 등록되는 알람은 변경 및 삭제할 수 있으며, 적용되는 인스턴스도 변경할 수 있습니다.
 
 ![rds_02_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_02_20190723.png)
 
