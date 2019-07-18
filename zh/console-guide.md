@@ -5,7 +5,7 @@
 * 가장 먼저 해야 할 일은 DB 인스턴스를 생성하는 일입니다.
 * **Console > Database > RDS for MySQL**의 **DB Instance**탭에서 좌측 상단 **+ 생성** 버튼을 누르시면 그림과 같이 페이지 하단에 생성 레이어가 표시됩니다.
 
-![rds_01_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_01_20190312_zh.png)
+![rds_01_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_01_20190723.png)
 
 * 설정 레이어에 표시된 필수 항목을 모두 입력하신 후, 레이어 우측 상단의 **다음** 버튼을 눌러주세요.
     * DB Instance : DB 인스턴스 이름을 입력합니다.
@@ -23,6 +23,7 @@
     * Storage : DB 인스턴스 볼륨의 크기를 입력합니다.
         * 20GB~1,000GB 크기로 생성할 수 있습니다.
     * Availabillity Zone : DB 인스턴스가 생성 될 Zone 을 선택합니다.
+    * 고가용성 : DB 인스턴스를 생성할 때, Master와 서로 다른 Availability Zone에 Candidate Master를 생성합니다.
     * 기본 알람: DB 인스턴스의 이벤트들 중 미리 정의된 이벤트에 대한 알람을 등록할 수 있습니다.
         * 기본 알람 사용 시 수신 그룹을 선택해야 합니다.
 
@@ -33,7 +34,7 @@
 > [참고] 인스턴스 리스트는 각 인스턴스의 생성 순서대로 정렬되며, candidate master는 master의 고가용성 옵션 사용 시점에 생성되기 때문에 장애조치 이후 인스턴스의 순서가 바뀔 수 있습니다.
 > [참고] 기본 알람 사용 시 해당 인스턴스에 대한 알람이 자동 등록되며, 이름은 "{인스턴스 이름}-default"로 설정됩니다. 등록되는 알람은 변경 및 삭제할 수 있으며, 적용되는 인스턴스도 변경할 수 있습니다.
 
-![rds_02_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_02_20190312_zh.png)
+![rds_02_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_02_20190723.png)
 
 * 자동 백업 및 접근 제어 설정을 한 후, **다음** 버튼을 누릅니다.
 * 백업 보관 기간: 자동 백업을 하려면 1일 이상 선택합니다.
@@ -44,7 +45,7 @@
 * 사용자 접근 제어: DB 인스턴스에 접근 가능한 사용자를 CIDR 형식으로 입력합니다.
     * 사용자 접근 제어에 등록되지 않은 IP 는 접속이 불가능합니다.
 
-![rds_03_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_03_20190312_zh.png)
+![rds_03_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_03_20190723.png)
 
 * 변경 하고자 하는 설정 값을 변경 후, **생성** 버튼을 누릅니다.
 * 최종적으로 **확인** 버튼을 누르면, DB 인스턴스가 생성됩니다.
@@ -53,23 +54,41 @@
 ### DB 인스턴스 접속
 
 * 생성된 DB 인스턴스를 선택하면 상세 설정을 확인 할 수 있습니다.
-* Floating IP 가 연결되지 않은 DB 인스턴스는 외부에서 접근이 불가능합니다.
+* 인스턴스의 상세 설정에서 접속 정보를 통하여 접속 가능한 Domain 정보를 확인할 수 있습니다.
+* Floating IP 를 사용으로 설정하지 않은 DB 인스턴스는 외부에서 접근이 불가능합니다.
 
-![rds_04_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_04_20190312_zh.png)
+![rds_04_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_04_20190723.png)
 
 * 외부에서 접속을 테스트하기 위해 우측 상단의 **변경** 버튼을 누릅니다.
 * Floating IP 항목을 **사용함**으로 수정합니다.
 * **확인** 버튼을 눌러 수정 사항을 반영합니다.
 
-![rds_05_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_05_20190312_zh.png)
+![rds_05_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_05_20190723.png)
 
 * 설정 후 Floating IP가 생성되어 외부에서 접근이 가능해진것을 확인할 수 있습니다.
 
-![rds_06_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_06_20190312_zh.png)
+![rds_06_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_06_20190723.png)
 
 * MySQL Workbench 접속 예시입니다.
 
 ## DB 인스턴스
+
+### 고가용성
+
+* 서로 다른 Availability Zone에 Candidate Master를 생성하여 장애 발생 시, 장애 조치를 할 수 있습니다.
+* 고가용성 인스턴스를 재시작할 경우, 장애조치를 위한 재시작 옵션을 선택하여 Master와 Candidate Master의 교체를 재현할 수 있습니다.
+* 고가용성을 사용한 인스턴스의 경우, 몇몇 옵션을 변경할 때 접속 정보는 변하지 않지만 Master와 Candidate Master 인스턴스는 서로 바뀔 수 있습니다. 
+
+#### 제약 사항
+
+* 고가용성 인스턴스는 최초 1회의 장애 조치를 보장합니다. 장애가 발생하여 장애 조치가 이루어질 경우, Candidate Master 인스턴스가 고가용성 기능을 사용하지 않는 일반 Master로 변경됩니다.
+* 장애조치가 발생하여 변경된 새로운 Master 인스턴스는 기존 Master 인스턴스의 접속에 사용되는 Domain들을 승계합니다.
+* 장애조치가 발생하여 변경된 새로운 Master 인스턴스는 새롭게 고가용성 옵션을 지정하여 사용할 수 있습니다.
+* 장애조치가 발생한 기존의 Master 인스턴스는 접속 정보가 변경되고, 중지됨 상태로 전환됩니다.
+* 장애조치가 발생한 기존의 Master 인스턴스는 인스턴스 재시작기능을 이용하여 재구동을 시도할 수는 있으나, 장애로 인한 데이터 손실 등의 이유로 다시 구동할 수 없거나, 정상적으로 작동하지 않을 수 있습니다.
+* Read Only Slave 인스턴스에 대해서는 고가용성 기능을 제공하지 않습니다.
+* 고가용성 기능을 사용하는 인스턴스를 재시작하거나 몇몇 옵션을 변경하는 경우에는 해당 동작이 이루어지는 동안 해당 인스턴스의 Read Only Slave들에 대한 조작을 할 수 없도록 변경됩니다.
+
 
 ### Flavor
 
@@ -109,20 +128,23 @@
 * 복원 시, 원본 DB 인스턴스를 변경하지 않고 새로운 DB 인스턴스를 생성합니다.
 * 백업의 저장 위치가 Object Storage 에 있을 경우, 시간이 더 소요됩니다.
 * 백업 중인 DB 인스턴스를 이용해서 복원할 수 없습니다.
+
 > [참고] 복원이 진행되는 동안 Binary Log 파일의 사이즈만큼 Object Storage 사용량이 발생할 수 있습니다.
+> [참고] Binary Log 파일이 존재하지 않을 경우에는 시점 복원을 할 수 없습니다.
 
 ### 복제
 
 * 읽기 성능을 높이기 위해서 MySQL 이 지원하는 Read Only Slave 를 만들 수 있습니다.
 * Read Only Slave 를 만들기 위해서 원본 DB 인스턴스를 선택한 후 **추가기능 > 복제본 생성**을 누릅니다.
 
-![rds_07_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_07_20190312_zh.png)
+![rds_07_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_07_20190723.png)
 
 * 복제본 생성을 위한 설정을 입력한 후, **복제** 버튼을 누르면 복제본이 생성됩니다.
 * 원본 DB 인스턴스와 동일한 사양 혹은 더 높은 사양으로 만드는 것을 권장하며, 낮은 사양으로 생성 시 복제 지연이 발생할 수 있습니다.
 * 복재본 생성시, 원본 DB 인스턴스의 I/O 성능이 평소보다 낮아 질 수 있습니다.
 * 원본 DB 인스턴스의 크기에 비례하여 복제본 생성 시간이 늘어 날 수 있습니다.
 > [참고] 복제가 진행되는 동안 Binary Log 파일의 사이즈만큼 Object Storage 사용량이 발생할 수 있습니다.
+> [참고] 복제가 완료되면, Master 인스턴스의 access rule 항목에 Read Only Slave의 rule이 추가됩니다. 
 
 #### 제약 사항
 
@@ -142,16 +164,17 @@
 
 #### Binary Log 삭제
 
-![rds_08_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_08_20190312_zh.png)
+![rds_08_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_08_20190723.png)
 
 * Binary Log 파일을 삭제하여 디스크 공간을 확보합니다.
 
->[주의]
->선택한 대상 Binary Log 파일과 그 이전에 생성된 Binary Log 파일 모두 삭제됩니다.
+> [주의] 선택한 대상 Binary Log 파일과 그 이전에 생성된 Binary Log 파일 모두 삭제됩니다.
+> [주의] Binary Log 파일을 삭제했을 때 삭제한 Binary Log 파일에 따라 특정 시점으로의 복원이 불가능해질 수 있습니다. 
+> [주의] Binary Log 파일을 모두 삭제했을 경우엔 시점 복원을 사용할 수 없습니다.
 
 ### Storage 확장
 
-![rds_09_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_09_20190312_zh.png)
+![rds_09_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_09_20190723.png)
 
 * DB 인스턴스의 Storage 크기를 확장합니다.
 * Read Only Slave 가 존재하는 경우, Master 와 같은 Storage 크기로 함께 확장됩니다.
@@ -162,12 +185,12 @@
 * RDS 는 DB 운영 및 사용에 필요한 모니터링 항목을 주기적으로 수집하고, 차트로 보여줍니다.
 * 특정 DB 인스턴스의 모니터링 항목이 보고 싶을 경우, **DB Instance** 목록에서 특정 DB 인스턴스를 선택 한 후, **Monitoring** 탭을 선택합니다.
 
-![rds_10_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_10_20190312_zh.png)
+![rds_10_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_10_20190723.png)
 
 * 전체 DB 인스턴스의 모니터링 항목이 보고 싶은 경우에는, Monitoring 탭으로 들어가신 후 보고자 하는 DB 인스턴스를 선택 후 **추가** 버튼을 누릅니다.
 * 차트 범위, 간격, 종류 및 항목을 변경 시, 변경 사항이 추가된 모든 DB 인스턴스에 영향을 줍니다.
 
-![rds_11_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_11_20190312_zh.png)
+![rds_11_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_11_20190723.png)
 
 * 차트의 범위를 쉽게 조정할 수 있게 유틸성 버튼을 제공합니다.
 * 1시간, 6시간 등의 버튼을 누를 때마다, 현재 시각을 기준으로 자동으로 from ~ to 를 계산하여 갱신합니다.
@@ -187,24 +210,24 @@
 
 * RDS 에서 지원하는 모니터링 항목은 다음과 같습니다.
 
-![rds_12_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_12_20190312_zh.png)
+![rds_12_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_12_20190723.png)
 
 ### 로그 파일
 
 * DB 인스턴스에 접속하지 않고 편하게 로그파일을 보거나 다운로드 받을 수 있습니다.
 * **DB Instance** 를 선택한 후, **Events & Log** 탭을 누르면 error.log, slow_query.log, general.log 파일을 볼 수 있습니다.
 
-![rds_13_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_13_20190312_zh.png)
+![rds_13_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_13_20190723.png)
 
 * 단 반드시 DB Configuration 에서 해당 로그를 남기도록 설정을 해야 합니다.
 * **보기** 버튼을 누르면 팝업이 열리며, 로그 파일을 볼 수 있습니다.
 * 로그 길이에 입력 된 라인수 만큼 볼 수 있으며, 끝에서부터 1MB 사이즈의 로그를 볼 수 있습니다.
 
-![rds_14_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_14_20190312_zh.png)
+![rds_14_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_14_20190723.png)
 
 * 로그 파일 전체를 보고 싶다면, **다운로드** 버튼을 눌러 직접 파일을 다운로드 받아야 합니다.
 
-![rds_15_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_15_20190312_zh.png)
+![rds_15_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_15_20190723.png)
 
 * **다운로드** 버튼을 누르면 팝업이 나타납니다.
 * **가져오기** 버튼을 누른후 잠시 기다리면, **다운로드** 버튼이 활성화 되어 다운로드 가능한 상태가 됩니다.
@@ -218,7 +241,7 @@
 * 특정 DB 인스턴스에서 발생한 이벤트를 보고 싶으면, DB 인스턴스를 선택한 후, 상세 설정 레이어의 Event & Log 탭에서 확인할 수 있습니다.
 * 내가 가진 모든 DB 인스턴스에서 발생한 이벤트를 한꺼번에 보려면, **Event** 탭으로 이동하여 조회할 수 있습니다.
 
-![rds_16_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_16_20190312_zh.png)
+![rds_16_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_16_20190723.png)
 
 * 이벤트 타입은 어떤 리소스에서 발생한 이벤트인지를 지칭합니다.
     * INSTANCE : DB 인스턴스와 관련된 이벤트 입니다.
@@ -231,7 +254,7 @@
 
 * RDS 는 원하는 리소스에서 발생하는 특정 이벤트에 대한 Notification을 수신그룹에 전달할 수 있습니다.
 
-![rds_17_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_17_20190312_zh.png)
+![rds_17_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_17_20190723.png)
 
 1. 원하는 Notification을 설정하기 위하여 **Notification** 탭을 선택한 후, **생성** 버튼을 클릭합니다.
 2. 원하는 Notification의 이름을 입력하고, 알림 설정을 통해 설정하고자하는 이벤트와 리소스를 선택합니다.
@@ -244,6 +267,6 @@
 
 설정한 조건을 만족 시 수신 대상에 입력한 메일주소와 전화번호로 알림을 받을 수 있습니다.
 
-![rds_18_20190312](https://static.toastoven.net/prod_rds/19.03.12/rds_18_20190312_zh.png)
+![rds_18_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_18_20190723.png)
 
 > [참고] 수신그룹에서 원하는 대상에 체크박스를 선택하지 않으면 메일이나 SMS가 전달되지 않습니다.

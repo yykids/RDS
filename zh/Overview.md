@@ -27,12 +27,15 @@ TOAST Cloud Relational Database Service (RDS) 는 Relational Database 를 클라
 * RDS 에서 제공하는 Relational Database 의 단위입니다.
 * DB 인스턴스는 가상 장비와 설치된 Relational Database 를 아우르는 개념입니다.
 * TOAST Cloud 의 Compute & Network 상품에서 제공하는 모든 사양의 가상 장비로 DB 인스턴스를 생성 할 수 있습니다.
-* DB 인스턴스는 최소 20 GB ~ 1,000 GB 크기의 HDD 스토리지를 지원합니다.
+* DB 인스턴스는 최소 20GB~1,000GB 크기의 HDD 및 SSD 스토리지를 지원합니다.
 * DB 인스턴스의 운영체제에 직접 접근 할 수 없으며, 오직 DB 인스턴스 생성 시 입력하신 port 를 통해서 Database 로만 접근 할 수 있습니다.
 * DB 인스턴스는 사용자의 Compute & Network 상품의 VPC Subnet을 선택해야만 생성할 수 있으며, 이를 통하여 사용자의 Compute & Network 상품의 Instance들과 통신이 가능합니다.
 * DB 인스턴스는 사용자의 Subnet 이외의 외부 네트워크와 단절되어 있습니다. 외부에서 연결을 원하면 Floating IP 를 붙여야 합니다.
 * 만약 Compute & Network 상품을 이용 중이라면, DB 인스턴스 생성 시, 연결을 원하시는 subnet 을 설정 할 수 있습니다.
 * 연결된 subnet 에 있는 DB 인스턴스와 인스턴스 간에는 네트워크 연결이 활성화 됩니다.
+* Master는 read, write가 가능한 일반적인 인스턴스입니다.
+* Read Only Slave는 Master의 실시간 Replication이 이루어지는 인스턴스로써, read만 가능한 인스턴스입니다.
+* Candidate Master는 고가용성 기능을 사용했을 때, 장애를 대비하여 Master와 서로 다른 Availability Zone에 숨겨진 장애 대비용 인스턴스입니다.
 
 ### Availability Zone
 
@@ -44,3 +47,8 @@ TOAST Cloud Relational Database Service (RDS) 는 Relational Database 를 클라
 * Floating IP는 설정하고자 하는 DB 인스턴스와 연결된 사용자 VPC Subnet에 Internet Gateway가 연결되어 있어야 사용이 가능합니다.
 * Floating IP 가 연결된 DB 인스턴스의 Database 는 외부에서 접속이 가능합니다.
 * Floating IP 는 생성하는 즉시 DB 인스턴스와는 별도로 요금이 부과됩니다.
+
+### 고가용성
+
+* 고가용성 기능을 사용할 경우, 현재 사용중인 인스턴스나 혹은 해당 인스턴스가 있는 Availability Zone에 문제가 발생했을 때, 다른 Availability Zone에 만들어놓은 Candidate Master 인스턴스로 하여금 장애 조치를 자동으로 동작하여 Database의 장애 시간을 최대한 단축킬 수 있습니다.
+* Master 인스턴스에 대한 고가용성을 보장합니다.
