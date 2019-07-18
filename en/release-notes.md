@@ -1,5 +1,16 @@
 ## Database > RDS for MySQL > Release Notes
 
+### July 23, 2019
+
+#### More Features
+
+- Default Alarm added
+- Monitoring Item added
+
+#### Updates
+
+- Backup-related events no longer support alarms.
+
 ### June 27, 2019
 
 #### More Features
