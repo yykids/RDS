@@ -26,6 +26,10 @@ RDS for MySQLは、ユーザーのCompute & Networkサービスを有効にす�
 * DBインスタンスは、ユーザーのサブネット以外の外部ネットワークと断絶されています。外部から接続したい場合は、Floating IPを接続する必要があります。
 * Compute & Networkサービスを利用中の場合、DBインスタンス作成時、接続したいサブネットを設定できます。
 * 接続されたサブネットにあるDBインスタンスとインスタンスの間には、ネットワーク接続が有効になります。
+* Masterは、read、writeが可能な一般的なインスタンスです。
+* Read Only SlaveはMasterをリアルタイムに複製(replication)するインスタンスで、readのみ可能です。
+* Candidate Masterは、高可用性機能を使用した時、障害に備えてMasterと異なるAvailability Zoneに作っておいた障害対策用インスタンスです。
+
 
 ### アベイラビリティーゾーン(availability zone)
 
@@ -37,3 +41,8 @@ RDS for MySQLは、ユーザーのCompute & Networkサービスを有効にす�
 * Floating IPは、DBインスタンスと接続されたユーザーVPCサブネットにインターネットゲートウェイが接続されている時のみ使用できます。
 * Floating IPが接続されたDBインスタンスのデータベースは、外部から接続できます。
 * Floating IPは、作成すると即時にDBインスタンスとは別途の料金がかかります。
+
+### 高可用性
+
+高可用性機能を使用すると、現在使用中のインスタンスや該当インスタンスがあるAvailability Zoneに問題が発生した時、別のAvailability Zoneに作っておいたCandidate Masterインスタンスで自動的にフェイルオーバーを実行します。したがって、データベースの障害時間を最大限短縮できます。
+Masterインスタンスに対する高可用性を保障します。
