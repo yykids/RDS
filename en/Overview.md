@@ -34,8 +34,8 @@ TOAST Cloud Relational Database Service (RDS) 는 Relational Database 를 클라
 * 만약 Compute & Network 상품을 이용 중이라면, DB 인스턴스 생성 시, 연결을 원하시는 subnet 을 설정 할 수 있습니다.
 * 연결된 subnet 에 있는 DB 인스턴스와 인스턴스 간에는 네트워크 연결이 활성화 됩니다.
 * Master는 read, write가 가능한 일반적인 인스턴스입니다.
-* Read Only Slave는 Master의 실시간 Replication이 이루어지는 인스턴스로써, read만 가능한 인스턴스입니다.
-* Candidate Master는 고가용성 기능을 사용했을 때, 장애를 대비하여 Master와 서로 다른 Availability Zone에 숨겨진 장애 대비용 인스턴스입니다.
+* Read Only Slave는 Master를 실시간으로 복제(replication)하는 인스턴스로, read만 가능합니다.
+* Candidate Master는 고가용성 기능을 사용했을 때, 장애를 대비해 Master와 서로 다른 Availability Zone에 만들어 놓은 장애 대비용 인스턴스입니다.
 
 ### Availability Zone
 
@@ -50,5 +50,5 @@ TOAST Cloud Relational Database Service (RDS) 는 Relational Database 를 클라
 
 ### 고가용성
 
-* 고가용성 기능을 사용할 경우, 현재 사용중인 인스턴스나 혹은 해당 인스턴스가 있는 Availability Zone에 문제가 발생했을 때, 다른 Availability Zone에 만들어놓은 Candidate Master 인스턴스로 하여금 장애 조치를 자동으로 동작하여 Database의 장애 시간을 최대한 단축킬 수 있습니다.
+* 고가용성 기능을 사용하면 현재 사용 중인 인스턴스나 해당 인스턴스가 있는 Availability Zone에 문제가 발생했을 때, 다른 Availability Zone에 만들어 놓은 Candidate Master 인스턴스에서 자동으로 장애 조치를 수행합니다. 따라서 데이터베이스의 장애 시간을 최대한 단축할 수 있습니다.
 * Master 인스턴스에 대한 고가용성을 보장합니다.
