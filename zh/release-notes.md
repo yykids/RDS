@@ -1,5 +1,16 @@
 ## Database > RDS for MySQL > Release Notes
 
+### August 13, 2019
+
+#### Feature Updates
+
+- Allowed to view event logs related to high availability more intuitively 
+
+#### Bug Fixes
+
+- Fixed the occasional failure in creating or restoring database instances
+- Fixed failed delivery of mails, notifying the deletion of database instances 
+
 ### July 23, 2019
 
 #### More Features
