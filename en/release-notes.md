@@ -1,5 +1,13 @@
 ## Database > RDS for MySQL > Release Notes
 
+### Sept. 24, 2019 
+
+#### Feature Updates 
+
+- Improved speed for creating an instance (About 28 minutes -> 13 minutes, for HA instances)
+- Updated UX to allow new backups for time restoration, at the restart by using failover 
+- Changed UI for enabling default alarm 
+
 ### August 13, 2019
 
 #### Feature Updates
