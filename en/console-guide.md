@@ -23,8 +23,10 @@ To use RDS for MySQL, a DB instance must be created first, in the following meth
     * Storage: Enter volume size of DB instance.
         * Between 20GB and 1,000GB  
     * Availability Zone: Select an area where DB instance is to be created.  
+    * Database File Encryption: User data files and backup files are encrypted.
 > [Note] Unless a selected VPC subnet of Compute & Network is connected with internet gateway, floating IP is not available.  
 > [Note] VPC subnet, once selected, cannot be changed.  
+> [Note] By enabling database file encryption, performance may be degraded more or less.
 
 Specify backup information on the **Backup & Access Control** page. 
 
@@ -66,15 +68,18 @@ Below is an example of access to MySQL Workbench.
 
 ## DB Instances
 
+### High Availability
+
+* When failure measures are taken for high-availability instance, the new master instance does not inherit the backup of the existing master instance.
+
 ### Instance Type 
 
 * DB instances can be created in all types provided by TOAST Compute & Network.  
 
 ### Backups 
 
-* RDS provides backups in the same size as data volume. 
-* When the backup volume is full, it is uploaded to Object Storage from the oldest. 
-* Backups stored in Object Storage are charged separately by capacity. 
+* RDS executes all backups, and then uploads and saves newly created backups on its own object storage.
+* For auto backups, backup volume is provided for free, as much as the data volume of the original instance.
 * If you don't want extra charges, be aware of the backup cycle. 
 * Performance may be degraded during backups. 
 * It is recommended to back up during when service load is low. 
@@ -91,11 +96,12 @@ Below is an example of access to MySQL Workbench.
 * Auto backups start at some point between backup start time and duration. 
 * Duration refers to time when backup starts: not that a backup is completed within it. 
     Even if a backup is not complete within duration, the backup is not closed. 
+* Auto backups are deleted along with the original instances.
 
 #### Manual Backups 
 
 * Manual backups are always available, except auto backups. 
-* All manual backups are saved in object storage and are not removed, unless they are deleted.  
+* Manual backups are not deleted, unless specified.
 
 ### Restoration 
 
@@ -149,6 +155,17 @@ Below is an example of access to MySQL Workbench.
 * Scale up storage of a DB instance. 
 * If Read Only Slave exists, the storage is scaled to the same size of Master. 
 * DB instance is restarted. 
+
+### Database File Encryption 
+
+* Files for database where user data is saved, as well as backup files, are encrypted.
+
+> [For Reference] Since encryption is performed in real time, performance may be degraded for database instances. 
+
+#### Restrictions 
+
+* Database file encryption cannot be enabled for the restoration or replication of instances, for which database file encryption is not enabled.
+* Database file encryption cannot be disabled for the restoration or replication of instances, for which database file encryption is enabled.
 
 ## Monitor 
 
