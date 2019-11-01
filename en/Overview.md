@@ -30,9 +30,18 @@ RDS for MySQL is available only when user enables Compute & Network.
 
 * Logical area where DB instance is to be created. 
 
+### High Availability
+
+* High availability is ensured for the master instance.
+
 ### Floating IP 
 
 * A floating IP to enable external communication. 
 * Internet gateway must be available for user's VPC subnet which is connected with DB instance where floating IP is to be configured. 
 * Database of DB instances associated with floating IP can be accessed from outside.
 * Floating IP is immediately charged as soon as it is created, apart from DB instances.  
+
+### Database File Encryption
+
+* With database file encryption, files for database where user data is saved, as well as backup files, can be encrypted. 
+* Safe use is guaranteed, even if database instances are stolen by a malicious user, since user data cannot be exposed.
