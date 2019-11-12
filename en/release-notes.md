@@ -2,10 +2,6 @@
 
 ### Nov. 12, 2019 
 
-#### More Features
-
-- Added the feature of database file encryption
-
 #### Feature Updates
 
 - Updated failure detection and restoration of candidate master 
