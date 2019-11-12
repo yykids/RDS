@@ -154,11 +154,6 @@ Below is an example of access to MySQL Workbench.
 * If Read Only Slave exists, the storage is scaled to the same size of Master. 
 * DB instance is restarted. 
 
-#### Restrictions 
-
-* Database file encryption cannot be enabled for the restoration or replication of instances, for which database file encryption is not enabled.
-* Database file encryption cannot be disabled for the restoration or replication of instances, for which database file encryption is enabled.
-
 ## Monitor 
 
 * RDS periodically collects monitoring items required for database operations and usage, and shows them on a chart. 
