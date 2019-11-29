@@ -23,8 +23,10 @@ To use RDS for MySQL, a DB instance must be created first, in the following meth
     * Storage: Enter volume size of DB instance.
         * Between 20GB and 1,000GB  
     * Availability Zone: Select an area where DB instance is to be created.  
+    * Database File Encryption: User data files and backup files are encrypted.
 > [Note] Unless a selected VPC subnet of Compute & Network is connected with internet gateway, floating IP is not available.  
 > [Note] VPC subnet, once selected, cannot be changed.  
+> [Note] By enabling database file encryption, performance may be degraded more or less.
 
 Specify backup information on the **Backup & Access Control** page. 
 
@@ -153,6 +155,17 @@ Below is an example of access to MySQL Workbench.
 * Scale up storage of a DB instance. 
 * If Read Only Slave exists, the storage is scaled to the same size of Master. 
 * DB instance is restarted. 
+
+### Database File Encryption 
+
+* Files for database where user data is saved, as well as backup files, are encrypted.
+
+> [For Reference] Since encryption is performed in real time, performance may be degraded for database instances. 
+
+#### Restrictions 
+
+* Database file encryption cannot be enabled for the restoration or replication of instances, for which database file encryption is not enabled.
+* Database file encryption cannot be disabled for the restoration or replication of instances, for which database file encryption is enabled.
 
 ## Monitor 
 
