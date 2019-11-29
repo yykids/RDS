@@ -1,5 +1,11 @@
 ## Database > RDS for MySQL > Release Notes
 
+### Dec. 10, 2019
+
+#### More Features
+
+- Added the feature of database file encryption
+
 ### Nov. 12, 2019 
 
 #### Feature Updates
