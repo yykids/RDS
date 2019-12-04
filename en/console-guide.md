@@ -22,12 +22,15 @@ To use RDS for MySQL, a DB instance must be created first, in the following meth
         * Either HDD or SSD.
     * Storage: Enter volume size of DB instance.
         * Between 20GB and 1,000GB  
-    * Availability Zone: Select an area where DB instance is to be created.  
+    * Availability Zone: Select an area where DB instance is to be created.
+    * High Availability: To create database instances, the candidate master is created at a different availability zone from the master.
     * Database File Encryption: User data files and backup files are encrypted.
     * Default Alarm: Register alarms for pre-defined events of a database instance.
       * To enable default alarm, a recipient group must be selected.
 > [Note] Unless a selected VPC subnet of Compute & Network is connected with internet gateway, floating IP is not available.  
-> [Note] VPC subnet, once selected, cannot be changed.  
+> [Note] VPC subnet, once selected, cannot be changed.
+> [Note] The candidate master instance is created at a different availability zone from the master, and it does not show on the list.
+> [Note] Instances on the list are arranged in the order of creation, but the order may change after measures are taken against failure, since the candidate master is created when the high availability option is enabled for the master.
 > [Note] By enabling database file encryption, performance may be degraded more or less.
 > [Note] With default alarm setting, alarms for the instance are automatically registered, in the name of "{instance name}-default". Registered alarms can be changed or deleted, and applied instances can also be changed.
 
@@ -53,11 +56,15 @@ Values can be changed on DB Configuration.
 
 ### Access to DB Instances 
 
-Select a DB instance which is created, to find its detail setting. Instances that are not associated with floating IP are not allowed for external access. 
+* Select a DB instance which is created, to find its detail setting. Instances that are not associated with floating IP are not allowed for external access. 
+* Go to [Detail Settings] and [Access Information] of an instance to check accessible domain information.
+* Database instances of which floating IP is not ‘Enabled’ cannot be accessed from outside.
 
-1. To test external access, click **Change** on top right.  
-2. Modify to **Enable** for floating IP. 
-3. Click **Confirm** to apply changes. 
+![rds_04_20191008](https://static.toastoven.net/prod_rds/19.10.08/rds_04_20191008.png)
+
+* To test external access, click **Change** on top right.  
+* Modify to **Enable** for floating IP. 
+* Click **Confirm** to apply changes. 
 
 ![rds_04_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_04_20190723_en.png)
 
@@ -71,9 +78,23 @@ Below is an example of access to MySQL Workbench.
 
 ## DB Instances
 
-### High Availability
+### High Availability 
 
 * When failure measures are taken for high-availability instance, the new master instance does not inherit the backup of the existing master instance.
+* Measures can be taken against failure which occurs when a candidate master is created at a different availability zone.
+* To restart a highly available instance, select [Restart by Taking Measures against Failure] to replace the master with the candidate master.
+* For those instances using high availability, access information does not change with partial changes in option, but the master and the candidate master instances may be interchanged.
+
+#### Restraints 
+
+* Highly available instances are ensured for the initial one-time measure against failure. If a measure is taken against failure, the candidate master instance is changed into a general master for which high availability is not enabled.
+* The newly changed master instance inherits a domain allowed to access the existing master instance.
+* The high availability option can also be newly specified for service.
+* For the existing master instance in which failure measure was taken, access information is changed and the status is converted to ‘Suspended’.
+* For the existing master instance in which failure measure was taken, restarting may be attempted by using Restart Instances. However, restarting may not work or properly operate due to reasons, including data loss out of failure.
+* The Read Only Slave instance is not provided with the high availability feature.
+* While restarting or changing options are underway for instances with high availability, the Read Only Slave is not operational. 
+* On the pop-up of [Receiving Target], enter name of a recipient group. Click and select a project member to receive notification messages.
 
 ### Instance Type 
 
@@ -112,7 +133,8 @@ Below is an example of access to MySQL Workbench.
 * For a restoration, a new DB instance is created, without changing original DB instances. 
 * It takes more time if the location to save backups is object storage. 
 * Cannot restore by using DB instances that are currently under backup. 
-> [Note] While restoration is underway, object storage volume may be incurred as much as the size of a binary log file.  
+> [Note] While restoration is underway, object storage volume may be incurred as much as the size of a binary log file.
+> [Caution] Restoring to a point in time is not available when there is no binary log file.
 
 ### Replication 
 
@@ -125,7 +147,8 @@ Below is an example of access to MySQL Workbench.
 * It is recommended to create the same or higher type than an original database instance, since using a lower type may cause delays in replication. 
 * When a replica is created, the I/O performance of the original database instance may be lower than usual. 
 * It make take more time to create a replica, in proportion of the size of original DB instance. 
-> [Note] While replication is underway, object storage volume may be incurred as much as the size of a binary log file.  
+> [Note] While replication is underway, object storage volume may be incurred as much as the size of a binary log file.
+> [Note] When replication is completed, the Read Only Slave rule is added to the access rule of the master instance.
 
 #### Restraints 
 
@@ -149,7 +172,9 @@ Below is an example of access to MySQL Workbench.
 
 * Delete a binary log file to secure more disk space. 
 
->[Caution] Selected binary log files and previously-created log files are all deleted. 
+> [Caution] Selected binary log files and previously-created log files are all deleted. 
+> [Caution] Depending on the binary log files that are deleted, restoration may not be available to a certain point in time.
+> [Caution] If all binary log files are deleted, point-in-time restoration is not available.
 
 ### Scaling Storage  
 
@@ -163,7 +188,7 @@ Below is an example of access to MySQL Workbench.
 
 * Files for database where user data is saved, as well as backup files, are encrypted.
 
-> [For Reference] Since encryption is performed in real time, performance may be degraded for database instances. 
+> [For Reference] Since encryption is performed in real time, performance may be degraded for database instances.
 
 #### Restrictions 
 
@@ -246,9 +271,10 @@ RDS delivers notifications on particular events occurring  at a resource to grou
 
 1. To set a notification, click **Create** on the **Notification** tab. 
 2. Enter name of notification and select events and resources to set from **Notification Setting**. 
-   After setting is done, click **Add**. 
+   * After setting is done, click **Add**. 
 3. To create a group of receivers, click **Create**. 
-4. On the window for [Receivers], enter name of the group of receivers. Click to select members, as receiver project members who receive notifications.
+4. On the pop-up of [Receiving Target], enter name of a recipient group. Click and select a project member to receive notification messages.
+   * After adding is done, click **Add**. 
 5. Then, click **Create** at the bottom. 
 6. After setting is completed, click **Create**.  
 
