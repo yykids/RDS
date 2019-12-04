@@ -45,3 +45,8 @@ RDS for MySQL在激活用户的Compute & Network服务后方可使用。
 
 * 若使用高可用性功能，当前使用的实例或该实例所在的Availability Zone发生问题时，在其他Availability Zone创建的Candidate Master实例自动执行故障处理。因此可最大程度缩短数据库的故障时间。
 * 保障Master实例的高可用性。
+
+### DB文件加密
+
+* 使用DB文件加密功能，可以对保存用户数据的数据库的文件及备份文件进行加密。 
+* 即使恶意用户夺取DB实例，用户数据也可安全使用，不会泄露。
