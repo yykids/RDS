@@ -25,6 +25,9 @@ RDS for MySQL is available only when user enables Compute & Network.
 * DB instance is disconnected from external networks, other than user's subnet. To enable external connection, floating IP must be associated. 
 * If you're using Compute & Network, you can set a subnet to connect when a DB instance is created.   
 * Network connection is enabled between DB instances and other instances in a connected subnet. 
+* The Master is a general instance that can read or write. 
+* The Read Only Slave instance replicates master in real time and it can read only. 
+* The Candidate Master is a standby instance which is created at a different availability zone from the master, against potential failure for the use of high availability. 
 
 ### Availability Zone
 
@@ -39,7 +42,12 @@ RDS for MySQL is available only when user enables Compute & Network.
 * A floating IP to enable external communication. 
 * Internet gateway must be available for user's VPC subnet which is connected with DB instance where floating IP is to be configured. 
 * Database of DB instances associated with floating IP can be accessed from outside.
-* Floating IP is immediately charged as soon as it is created, apart from DB instances.  
+* Floating IP is immediately charged as soon as it is created, apart from DB instances.
+
+### High Availability 
+
+* With the High Availability feature, when an issue arises from instances currently in service or at an availability zone of such instances, measures are automatically taken against failure in the candidate master instance created at another availability zone. This can shorten failure duration of database to the best possible extent.
+* High availability is ensured for master instances.
 
 ### Database File Encryption
 
