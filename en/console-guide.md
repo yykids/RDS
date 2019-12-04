@@ -24,9 +24,12 @@ To use RDS for MySQL, a DB instance must be created first, in the following meth
         * Between 20GB and 1,000GB  
     * Availability Zone: Select an area where DB instance is to be created.  
     * Database File Encryption: User data files and backup files are encrypted.
+    * Default Alarm: Register alarms for pre-defined events of a database instance.
+      * To enable default alarm, a recipient group must be selected.
 > [Note] Unless a selected VPC subnet of Compute & Network is connected with internet gateway, floating IP is not available.  
 > [Note] VPC subnet, once selected, cannot be changed.  
 > [Note] By enabling database file encryption, performance may be degraded more or less.
+> [Note] With default alarm setting, alarms for the instance are automatically registered, in the name of "{instance name}-default". Registered alarms can be changed or deleted, and applied instances can also be changed.
 
 Specify backup information on the **Backup & Access Control** page. 
 
