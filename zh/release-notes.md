@@ -4,7 +4,7 @@
 
 #### More Features
 
-- Added the feature of database file encryption
+- Added the feature of database file encryption (Korea Region)
 
 ### Nov. 12, 2019 
 
