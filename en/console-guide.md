@@ -94,7 +94,8 @@ Below is an example of access to MySQL Workbench.
 * For the existing master instance in which failure measure was taken, restarting may be attempted by using Restart Instances. However, restarting may not work or properly operate due to reasons, including data loss out of failure.
 * The Read Only Slave instance is not provided with the high availability feature.
 * While restarting or changing options are underway for instances with high availability, the Read Only Slave is not operational. 
-* On the pop-up of [Receiving Target], enter name of a recipient group. Click and select a project member to receive notification messages.
+* The high-availability feature is based on each domain. Therefore, if a user instance for Compute cannot access a dns serer, the instance cannot access RDS intances via domain, which may cause trouble in accessing for a failover. 
+
 
 ### Instance Type 
 
