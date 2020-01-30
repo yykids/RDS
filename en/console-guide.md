@@ -76,6 +76,10 @@ Below is an example of access to MySQL Workbench.
 
 ![rds_06_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_06_20190723_en.png)
 
+#### Constraints 
+
+* If user's compute instance lies in the network environment which cannot access DNS server, the instance cannot access RDS instance via domain.
+
 ## DB Instances
 
 ### High Availability 
