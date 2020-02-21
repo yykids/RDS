@@ -76,6 +76,10 @@ Floating IP未设置为“使用”的DB实例无法从外部访问。
 
 ![rds_06_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_06_20190723_zh.png)
 
+#### 限制事项
+
+* 在用户Compute商品的实例无法访问dns服务器的网络环境下，相应实例无法通过域访问RDS实例。
+
 ## DB实例
 
 ### 高可用性
