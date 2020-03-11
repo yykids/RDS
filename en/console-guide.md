@@ -290,3 +290,41 @@ Now, when conditions are met as configured, notifications are sent via mail addr
 ![rds_18_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_18_20190723_en.png)
 
 > [Note] Unless receivers are checked to select, mail or SMS messages cannot be sent.  
+
+## 부록1. 하이퍼바이저 점검을 위한 DB 인스턴스 마이그레이션 가이드
+
+TOAST는 주기적으로 DB 인스턴스의 하이퍼바이저 소프트웨어를 업데이트하여 보안과 안정성을 향상시키고 있습니다.
+점검 대상 하이퍼바이저에서 구동 중인 DB 인스턴스는 마이그레이션을 통해 점검이 완료된 하이퍼바이저로 이동해야 합니다.
+
+Migration of database instance can start on a TOAST console.
+Depending on database configuration, select a particular instance to migrate it as well, if its relevant database instance (e.g. slave instance) is also the target of maintenance.
+Follow the guide as below, to use the migration service on console.
+Go to the project in which a database instance for maintenance is located.
+
+### 1. Check database instances which are the maintenance targets.
+
+Those with the migration button next to name are the maintenance targets.
+
+![rds_planed_migration_0](https://static.toastoven.net/prod_rds/planned_migration_alarm/image0_en.png)
+
+Put a cursor on the migration button, and you can find its maintenance schedule.
+
+![rds_planed_migration_1](https://static.toastoven.net/prod_rds/planned_migration_alarm/image1_en.png)
+
+### 2. Make sure to close any application programs that are running on the database instance.
+
+It is recommended to take appropriate measures so as impact on relevant services can be limited.
+Nevertheless, if impact on service is inevitable, contact TOAST Customer Center to be guided further.
+
+### 3. Select a database instance for maintenance, click migration, and click OK on window asking of migration.
+
+![rds_planed_migration_2](https://static.toastoven.net/prod_rds/planned_migration_alarm/image2_en.png)
+
+### 4. Wait until database migration is over.
+
+If instance status remains the same, try ‘Refresh’.
+
+![rds_planed_migration_3](https://static.toastoven.net/prod_rds/planned_migration_alarm/image3_en.png)
+
+While migration is underway, operation is not permitted.
+An abnormal closure of database instance migration shall be automatically reported to administrator, and it such case, you’ll be contacted by TOAST.

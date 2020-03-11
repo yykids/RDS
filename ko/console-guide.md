@@ -288,3 +288,41 @@
 ![rds_18_20191008](https://static.toastoven.net/prod_rds/19.10.08/rds_18_20191008.png)
 
 > [참고] 수신그룹에서 원하는 대상에 체크박스를 선택하지 않으면 메일이나 SMS가 전달되지 않습니다.
+
+## 부록1. 하이퍼바이저 점검을 위한 DB 인스턴스 마이그레이션 가이드
+
+TOAST는 주기적으로 DB 인스턴스의 하이퍼바이저 소프트웨어를 업데이트하여 보안과 안정성을 향상시키고 있습니다.
+점검 대상 하이퍼바이저에서 구동 중인 DB 인스턴스는 마이그레이션을 통해 점검이 완료된 하이퍼바이저로 이동해야 합니다.
+
+DB 인스턴스 마이그레이션은 TOAST 콘솔에서 시작할 수 있습니다.
+DB 구성에 따라 특정 DB 인스턴스를 선택하여 마이그레이션 시, 연관된 DB 인스턴스(예를 들면 Slave 인스턴스)도 점검 대상이면 같이 마이그레이션을 진행합니다.
+아래 가이드에 따라 콘솔에 있는 마이그레이션 기능을 이용하시기 바랍니다.
+점검 대상으로 지정된 DB 인스턴스가 있는 프로젝트로 이동합니다.
+
+### 1. 점검 대상 DB 인스턴스를 확인 합니다.
+
+이름 옆에 마이그레이션 버튼이 있는 DB 인스턴스가 점검 대상 인스턴스입니다.
+
+![rds_planed_migration_0](https://static.toastoven.net/prod_rds/planned_migration_alarm/image0_kr.png)
+
+마이그레이션 버튼 위에 마우스 커서를 올리면 자세한 점검 일정을 확인할 수 있습니다.
+
+![rds_planed_migration_1](https://static.toastoven.net/prod_rds/planned_migration_alarm/image1_kr.png)
+
+### 2. 점검 대상 DB 인스턴스에 접속 중인 응용 프로그램을 종료해야 합니다.
+
+DB에 연결된 서비스에 영향을 주지 않도록 적절한 조치를 취하시길 바랍니다.
+서비스에 영향을 줄 수밖에 없을 때는 TOAST 고객 센터로 연락해 주시면 적합한 조치를 안내해 드리겠습니다.
+
+### 3. 점검 대상 DB 인스턴스를 선택하고 마이그레이션 버튼을 클릭한 후 DB 인스턴스 마이그레이션 확인을 묻는 창이 나타나면 확인 버튼을 클릭합니다.
+
+![rds_planed_migration_2](https://static.toastoven.net/prod_rds/planned_migration_alarm/image2_kr.png)
+
+### 4. DB 인스턴스 마이그레이션이 끝날 때까지 대기합니다.
+
+DB 인스턴스 상태가 변경되지 않는다면 '새로 고침'을 해보시기 바랍니다.
+
+![rds_planed_migration_3](https://static.toastoven.net/prod_rds/planned_migration_alarm/image3_kr.png)
+
+DB 인스턴스가 마이그레이션되는 동안에는 아무런 조작을 할 수 없습니다.
+DB 인스턴스 마이그레이션이 정상적으로 완료되지 않으면 자동으로 관리자에게 보고되며, TOAST에서 별도로 연락을 드립니다.
