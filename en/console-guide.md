@@ -291,10 +291,9 @@ Now, when conditions are met as configured, notifications are sent via mail addr
 
 > [Note] Unless receivers are checked to select, mail or SMS messages cannot be sent.  
 
-## 부록1. 하이퍼바이저 점검을 위한 DB 인스턴스 마이그레이션 가이드
+## Appendix 1. Guide for Database Instance Migration for Hypervisor Maintenance
 
-TOAST는 주기적으로 DB 인스턴스의 하이퍼바이저 소프트웨어를 업데이트하여 보안과 안정성을 향상시키고 있습니다.
-점검 대상 하이퍼바이저에서 구동 중인 DB 인스턴스는 마이그레이션을 통해 점검이 완료된 하이퍼바이저로 이동해야 합니다.
+TOAST updates hypervisor software on a regualr basis to enhance security and stability of its infrastructure services. Instances that are running on a target hypervisor for maintenance must be migrated to a hypervisor which is completed with maintenance.
 
 Migration of database instance can start on a TOAST console.
 Depending on database configuration, select a particular instance to migrate it as well, if its relevant database instance (e.g. slave instance) is also the target of maintenance.
