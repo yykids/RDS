@@ -76,6 +76,10 @@ Below is an example of access to MySQL Workbench.
 
 ![rds_06_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_06_20190723_en.png)
 
+#### Constraints 
+
+* If user's compute instance lies in the network environment which cannot access DNS server, the instance cannot access RDS instance via domain.
+
 ## DB Instances
 
 ### High Availability 
@@ -286,3 +290,40 @@ Now, when conditions are met as configured, notifications are sent via mail addr
 ![rds_18_20190723](https://static.toastoven.net/prod_rds/19.07.23/rds_18_20190723_en.png)
 
 > [Note] Unless receivers are checked to select, mail or SMS messages cannot be sent.  
+
+## Appendix 1. Guide for Database Instance Migration for Hypervisor Maintenance
+
+TOAST updates hypervisor software on a regualr basis to enhance security and stability of its infrastructure services. Instances that are running on a target hypervisor for maintenance must be migrated to a hypervisor which is completed with maintenance.
+
+Migration of database instance can start on a TOAST console.
+Depending on database configuration, select a particular instance to migrate it as well, if its relevant database instance (e.g. slave instance) is also the target of maintenance.
+Follow the guide as below, to use the migration service on console.
+Go to the project in which a database instance for maintenance is located.
+
+### 1. Check database instances which are the maintenance targets.
+
+Those with the migration button next to name are the maintenance targets.
+
+![rds_planed_migration_0](https://static.toastoven.net/prod_rds/planned_migration_alarm/image0_en.png)
+
+Put a cursor on the migration button, and you can find its maintenance schedule.
+
+![rds_planed_migration_1](https://static.toastoven.net/prod_rds/planned_migration_alarm/image1_en.png)
+
+### 2. Make sure to close any application programs that are running on the database instance.
+
+It is recommended to take appropriate measures so as impact on relevant services can be limited.
+Nevertheless, if impact on service is inevitable, contact TOAST Customer Center to be guided further.
+
+### 3. Select a database instance for maintenance, click migration, and click OK on window asking of migration.
+
+![rds_planed_migration_2](https://static.toastoven.net/prod_rds/planned_migration_alarm/image2_en.png)
+
+### 4. Wait until database migration is over.
+
+If instance status remains the same, try ‘Refresh’.
+
+![rds_planed_migration_3](https://static.toastoven.net/prod_rds/planned_migration_alarm/image3_en.png)
+
+While migration is underway, operation is not permitted.
+An abnormal closure of database instance migration shall be automatically reported to administrator, and it such case, you’ll be contacted by TOAST.
