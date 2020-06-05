@@ -24,7 +24,7 @@ mysqldump -h{rds_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port}
 
 ### mysqldumpを利用してインポート
 
-* データをインポートするTOAST RDS外部のDBを準備します。
+* データをインポートするTOAST RDS外部のデータベースを準備します。
 * インポートするTOAST RDSインスタンスの容量が十分にあるか確認します。
 * Floating IPを作成してTOAST RDSインスタンスに接続します。
 * 下記のmysqldumpコマンドを使用して外部からデータをインポートします。
@@ -35,8 +35,8 @@ mysqldump -h{external_db_host} -u{external_db_id} -p{external_db_password} --por
 
 ### コピーを利用してエクスポート
 
-* コピーを利用してTOAST RDSのデータを外部DBにエクスポートできます。
-* 外部DBバージョンはTOAST RDSのバージョンと同じか、それより新しいバージョンでなければいけません。
+* コピーを利用してTOAST RDSのデータを外部データベースにエクスポートできます。
+* 外部データベースのバージョンはTOAST RDSのバージョンと同じか、それより新しいバージョンでなければいけません。
 * データをエクスポートするTOAST RDS MasterまたはRead Only Slaveインスタンスを準備します。
 * Floating IPを作成して、データをエクスポートするTOAST RDSインスタンスに接続します。
 * 下記のコマンドを使用してTOAST RDSインスタンスからデータをファイルでエクスポートします。
@@ -54,8 +54,8 @@ mysqldump -h{rds_read_only_slave_insance_floating_ip} -u{db_id} -p{db_password} 
 ```
 
 * バックアップされたファイルを開き、コメントに書かれたMASTER_LOG_FILEおよびMASTER_LOG_POSを別途記録します。
-* TOAST RDSインスタンスからデータをバックアップする外部ローカルクライアント、またはDBがインストールされたコンピュータの容量が十分にあるか確認します。
-* 外部DBのmy.cnf (Winodwsの場合my.ini)ファイルに下記のようなオプションを追加します。
+* TOAST RDSインスタンスからデータをバックアップする外部ローカルクライアント、またはデータベースがインストールされたコンピュータの容量が十分にあるか確認します。
+* 外部データベースのmy.cnf (Winodwsの場合my.ini)ファイルに下記のようなオプションを追加します。
 * server-idの場合、TOAST RDSインスタンスのDB Configuration項目のserver-idと異なる値を入力します。
 
 ```
@@ -67,8 +67,8 @@ replicate-ignore-db=rds_maintenance
 ...
 ```
 
-* 外部DBを再起動します。
-* バックアップされたファイルを下記のコマンドを使用して外部DBに入力します。
+* 外部データベースを再起動します。
+* バックアップされたファイルを下記のコマンドを使用して外部データベースに入力します。
 
 ```
 mysql -h{external_db_host} -u{exteranl_db_id} -p{external_db_password} --port={exteranl_db_port} < {local_path_and_file_name}
@@ -83,7 +83,7 @@ STOP SLAVE;
 RESET SLAVE;
 ```
 
-* コピーに使用するアカウント情報と、別途記録しておいたMASTER_LOG_FILEとMASTER_LOG_POSを利用して、外部DBに下記のようにクエリーを実行します。
+* コピーに使用するアカウント情報と、別途記録しておいたMASTER_LOG_FILEとMASTER_LOG_POSを利用して、外部データベースに下記のようにクエリーを実行します。
 
 ```
 CHANGE MASTER TO master_host = '{rds_master_instance_floating_ip}', master_user='{user_id_for_replication}', master_password='{password_forreplication_user}', master_port ={rds_master_instance_port}, master_log_file ='{MASTER_LOG_FILE}', master_log_pos = {MASTER_LOG_POS};
@@ -91,4 +91,4 @@ CHANGE MASTER TO master_host = '{rds_master_instance_floating_ip}', master_user=
 START SLAVE;
 ```
 
-* 外部DBでTOAST RDSインスタンスの原本データのコピーが完了した後、外部DBにSTOP SLAVEコマンドを利用してコピーを終了します。
+* 外部データベースでTOAST RDSインスタンスの原本データのコピーが完了した後、外部データベースにSTOP SLAVEコマンドを利用してコピーを終了します。
