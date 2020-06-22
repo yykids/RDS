@@ -104,7 +104,7 @@ START SLAVE;
 mysqldump -h{master_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} --single-transaction --master-data=2 --routines --events --triggers --databases {database_name1, database_name2, ...} > {local_path_and_file_name}
 ```
 
-* 외부 MySQL 인스턴스(슬레이브)로부터 가져올경우.
+* 외부 MySQL 인스턴스(슬레이브)로부터 가져올 경우.
 
 ```
 mysqldump -h{slave_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} --single-transaction --dump-slave=2 --routines --events --triggers --databases {database_name1, database_name2, ...} > {local_path_and_file_name}
