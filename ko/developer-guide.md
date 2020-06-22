@@ -91,3 +91,70 @@ START SLAVE;
 ```
 
 * 외부 db에서 TOAST Cloud RDS 인스턴스의 원본 데이터를 따라잡은 후, 외부 db에 STOP SLAVE 명령을 이용하여 복제를 종료합니다.
+
+### 복제를 이용하여 가져오기
+
+* 복제를 이용하여 외부의 DB를 TOAST Cloud RDS의 데이터로 가져올 수 있습니다.
+* TOAST Cloud RDS 버전은 외부의 db 버전과 같거나 그보다 최신 버전이어야합니다.
+* 데이터를 내보낼 외부 MySQL 인스턴스에 연결합니다.
+* 아래의 명령어를 통해 외부 MySQL 인스턴스로부터 데이터를 백업합니다.
+* 외부 MySQL 인스턴스(마스터)로부터 가져올 경우.
+
+```
+mysqldump -h{master_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} --single-transaction --master-data=2 --routines --events --triggers --databases {database_name1, database_name2, ...} > {local_path_and_file_name}
+```
+
+* 외부 MySQL 인스턴스(슬레이브)로부터 가져올경우.
+
+```
+mysqldump -h{slave_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} --single-transaction --dump-slave=2 --routines --events --triggers --databases {database_name1, database_name2, ...} > {local_path_and_file_name}
+```
+
+* 백업된 파일을 열어 주석에 쓰여진 MASTER_LOG_FILE 및 MASTER_LOG_POS를 따로 기록합니다.
+* TOAST Cloud RDS 인스턴스로부터 데이터를 백업받을 외부 로컬 클라이언트 혹은 db가 설치된 컴퓨터의 용량이 충분한지 확인합니다.
+* 외부 DB에 my.cnf (winodws의 경우 my.ini) 파일에 아래와 같은 옵션을 추가합니다.
+* server-id의 경우 TOAST Cloud RDS 인스턴스의 DB Configuration 항목의 server-id와 다른 값으로 입력합니다.
+
+```
+...
+[mysqld]
+...
+server-id={server_id}
+replicate-ignore-db=rds_maintenance
+...
+```
+
+* 외부 DB를 재시작합니다.
+* 외부 네트워크를 통해 import 하는경우 오래걸릴 수 있기 때문에,
+* 내부 TC Image 생성후, 백업파일을 복사후 TOAST Cloud로 import를 권장합니다.
+* 백업된 파일을 아래의 명령어를 통해 TOAST Cloud RDS에 입력합니다.
+* 복제 구성의 경우 DNS는 지원하지 않습니다. DNS의 경우로 IP로 변환하여 실행합니다.
+
+```
+mysql -h{rds_master_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} < {local_path_and_file_name}
+```
+
+* 외부 MySQL 인스턴스에서 복제에 사용할 계정을 생성합니다.
+
+```
+mysql> CREATE USER 'user_id_for_replication'@'{external_db_host}' IDENTIFIED BY '<password_forreplication_user>';
+mysql> GRANT REPLICATION CLIENT, REPLICATION SLAVE ON *.* TO 'user_id_for_replication'@'{external_db_host}';
+```
+
+* 복제에 사용할 계정 정보와 아까 따로 기록해 두었던 MASTER_LOG_FILE과 MSATER_LOG_POS를 이용하여 TOAST Cloud RDS에 아래와 같이 쿼리를 실행합니다.
+
+```
+mysql> call mysql.tcrds_repl_changemaster ('rds_master_instance_floating_ip',rds_master_instance_port,'user_id_for_replication','password_forreplication_user','MASTER_LOG_FILE',MASTER_LOG_POS );
+```
+
+* 복제 시작을 위해 아래 프로시져를 실행합니다.
+
+```
+mysql> call mysql.tcrds_repl_slave_start;
+```
+
+* TOAST Cloud RDS 인스턴스에서 외부 db 데이터를 따라잡은 후, 아래 명령을 이용하여 복제를 종료합니다.
+
+```
+mysql> call mysql.tcrds_repl_init();
+```
