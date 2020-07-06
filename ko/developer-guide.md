@@ -90,7 +90,7 @@ CHANGE MASTER TO master_host = '{rds_master_instance_floating_ip}', master_user=
 START SLAVE;
 ```
 
-* 외부 DB에서 TOAST RDS 인스턴스의 원본 데이터를 따라잡은 후, 외부 DB에 STOP SLAVE 명령을 이용해 복제를 종료합니다.
+* 외부 DB와 TOAST RDS 인스턴스의 원본 데이터가 같아지면, 외부 DB에 STOP SLAVE 명령을 이용해 복제를 종료합니다
 
 ### 복제를 이용하여 가져오기
 
@@ -153,7 +153,7 @@ mysql> call mysql.tcrds_repl_changemaster ('rds_master_instance_floating_ip',rds
 mysql> call mysql.tcrds_repl_slave_start;
 ```
 
-* TOAST RDS 인스턴스에서 외부 DB를 따라잡은 후, 아래 명령을 이용해 복제를 종료합니다.
+* 외부 DB와 TOAST RDS 인스턴스의 원본 데이터가 같아지면, 아래 명령을 이용해 복제를 종료합니다.
 
 ```
 mysql> call mysql.tcrds_repl_init();
