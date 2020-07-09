@@ -91,4 +91,71 @@ CHANGE MASTER TO master_host = '{rds_master_instance_floating_ip}', master_user=
 START SLAVE;
 ```
 
-* 外部データベースでTOAST RDSインスタンスの原本データのコピーが完了した後、外部データベースにSTOP SLAVEコマンドを利用してコピーを終了します。
+* 外部DBとTOAST RDSインスタンスの原本データが同じ場合、外部DBにSTOP SLAVEコマンドを利用して複製を終了します。
+
+### 複製を利用してインポートする
+
+* 複製を利用して外部DBをTOAST RDSにインポートします。
+* TOAST RDSバージョンは外部DBバージョンと同じか、それより新しいバージョンである必要があります。
+* データをエクスポートする外部MySQLインスタンスに接続します。
+* 下記のコマンドで外部MySQLインスタンスからデータをバックアップします。
+* 外部MySQLインスタンス(マスター)からインポートする場合
+
+```
+mysqldump -h{master_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} --single-transaction --master-data=2 --routines --events --triggers --databases {database_name1, database_name2, ...} > {local_path_and_file_name}
+```
+
+* 外部MySQLインスタンス(スレーブ)からインポートする場合
+
+```
+mysqldump -h{slave_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} --single-transaction --dump-slave=2 --routines --events --triggers --databases {database_name1, database_name2, ...} > {local_path_and_file_name}
+```
+
+* バックアップされたファイルを開き、コメントのMASTER_LOG_FILEおよびMASTER_LOG_POSを別途記録します。
+* TOAST RDSインスタンスからデータをバックアップするクライアントやコンピュータの容量が十分にあるかを確認します。
+* 外部DBのmy.cnf(Winodwsの場合my.ini)ファイルに下記のオプションを追加します。
+* server-idの場合、TOAST RDSインスタンスのDB Configuration項目のserver-idと同じ値を入力します。
+
+```
+...
+[mysqld]
+...
+server-id={server_id}
+replicate-ignore-db=rds_maintenance
+...
+```
+
+* 外部DBを再起動します。
+* 外部ネットワークからインポート(import)すると、時間がかかる場合があるため、
+* 内部TOAST Imageを作成してバックアップファイルをコピーした後、TOASTにインポートすることを推奨します。
+* バックアップされたファイルを、下記のコマンドでTOAST RDSに入力します。
+* 複製構成はDNSをサポートしないため、IPに変換して実行します。
+
+```
+mysql -h{rds_master_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} < {local_path_and_file_name}
+```
+
+* 外部MySQLインスタンスで複製に使用するアカウントを作成します。
+
+```
+mysql> CREATE USER 'user_id_for_replication'@'{external_db_host}' IDENTIFIED BY '<password_forreplication_user>';
+mysql> GRANT REPLICATION CLIENT, REPLICATION SLAVE ON *.* TO 'user_id_for_replication'@'{external_db_host}';
+```
+
+* 複製に使用するアカウント情報と、別途記録しておいたMASTER_LOG_FILE、MSATER_LOG_POSを利用してTOAST RDSに次のクエリーを実行します。
+
+```
+mysql> call mysql.tcrds_repl_changemaster ('rds_master_instance_floating_ip',rds_master_instance_port,'user_id_for_replication','password_forreplication_user','MASTER_LOG_FILE',MASTER_LOG_POS );
+```
+
+* 複製を開始するには、下記のプロシージャを実行します。
+
+```
+mysql> call mysql.tcrds_repl_slave_start;
+```
+
+* 外部DBとTOAST RDSインスタンスの原本データが同じ場合、下記コマンドを利用して複製を終了します。
+
+```
+mysql> call mysql.tcrds_repl_init();
+```
