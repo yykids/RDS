@@ -21,7 +21,7 @@
     * Storage 타입: DB 인스턴스 볼륨의 타입을 지정합니다.
         * HDD 및 SSD를 선택할 수 있습니다.
     * Storage : DB 인스턴스 볼륨의 크기를 입력합니다.
-        * 20GB~1,000GB 크기로 생성할 수 있습니다.
+        * 20GB~2,000GB 크기로 생성할 수 있습니다.
     * Availabillity Zone : DB 인스턴스가 생성 될 Zone 을 선택합니다.
     * 고가용성 : DB 인스턴스를 생성할 때, Master와 서로 다른 Availability Zone에 Candidate Master를 생성합니다.
     * DB 파일 암호화: 사용자 데이터 파일 및 백업 파일을 암호화합니다.

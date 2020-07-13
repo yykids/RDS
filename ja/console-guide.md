@@ -22,7 +22,7 @@ RDS for MysQLを使用するには、先にDBインスタンスを作成する�
     * Storageタイプ：DBインスタンスボリュームのタイプを指定します。
         * HDDおよびSSDを選択できます。
     * Storage：DBインスタンスボリュームのサイズを入力します。 
-        * 20GB～1,000GBのサイズで作成できます。
+        * 20GB～2,000GBのサイズで作成できます。
     * Availabillity Zone：DBインスタンスが作成される領域を選択します。
     * 高可用性：DBインスタンスを作成する時、Masterとは異なるAvailability ZoneにCandidate Masterを作成します。
     * DBファイルの暗号化：ユーザーデータファイルおよびバックアップファイルを暗号化します。
