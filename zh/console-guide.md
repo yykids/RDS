@@ -21,7 +21,7 @@
     * Storage类型：指定DB实例卷的类型。
         * 可选择HDD及SSD。
     * Storage:输入DB实例卷的大小。
-        * 可创建为20GB~1,000GB的大小。
+        * 可创建为20GB~2,000GB的大小。
     * Availabillity Zone:选择要创建DB实例的区域。
     * 高可用性：创建DB实例时，在与Master不同的Availability Zone创建Candidate Master。
     * DB文件加密：加密用户数据文件及备份文件。

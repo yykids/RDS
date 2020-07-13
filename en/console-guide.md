@@ -21,7 +21,7 @@ To use RDS for MySQL, a DB instance must be created first, in the following meth
     * Storage Type: Specify volume type of DB instance.
         * Either HDD or SSD.
     * Storage: Enter volume size of DB instance.
-        * Between 20GB and 1,000GB  
+        * Between 20GB and 2,000GB  
     * Availability Zone: Select an area where DB instance is to be created.
     * High Availability: To create database instances, the candidate master is created at a different availability zone from the master.
     * Database File Encryption: User data files and backup files are encrypted.
