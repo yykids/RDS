@@ -1,5 +1,11 @@
 ## Database > RDS for MySQL > Release Notes
 
+### 2020. 07. 14.
+
+#### 기능 추가
+
+- MySQL 8.0.18 버전을 추가 지원
+
 ### Dec. 10, 2019
 
 #### More Features
