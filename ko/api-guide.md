@@ -52,7 +52,7 @@ GET /rds/api/v1.0/appkeys/{appkey}/monitoring/metric-statistics
 | 이름 | 종류 | 형식 | 필수 | 설명 | 제약 사항 |
 |---|---|---|---|---|---|
 | appkey | URL | String | O | 상품 Appkey 또는 프로젝트 통합 Appkey | |
-| instanceId | Query | Array(String) | O | DB 인스턴스 아이디 | Min:1, Max: 20 |
+| instanceId | Query | Array | O | DB 인스턴스 아이디 리스트 | Min:1, Max: 20 |
 | metricName | Query | Enum | O | 통계 항목(Metric) 이름 | |
 | period | Query | Enum | O | 조회 주기 | |
 | statisticsType | Query | Enum | O | 통계 타입 | |
