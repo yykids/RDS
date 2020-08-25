@@ -24,16 +24,16 @@ GET /rds/api/v1.0/appkeys/{appkey}/monitoring/metrics
 
 ```json
 {
-"metrics" : [
-{
-"metricName" : "CPU_USAGE",
-"unit" : "percent"
-},
-{
-"metricName" : "NETWORK_SENT",
-"unit" : "bps"
-}
-]
+  "metrics": [
+    {
+      "metricName": "CPU_USAGE",
+      "unit": "percent"
+    },
+    {
+      "metricName": "NETWORK_SENT",
+      "unit": "bps"
+    }
+  ]
 }
 ```
 
@@ -46,7 +46,7 @@ GET /rds/api/v1.0/appkeys/{appkey}/monitoring/metric-statistics
 #### 요청
 
 | 이름 | 종류 | 형식 | 필수 | 설명 | 제약 사항 |
-|---|---|---|---|---|
+|---|---|---|---|---|---|
 | appkey | URL | String | O | 상품 Appkey 또는 프로젝트 통합 Appkey | |
 | instanceId | Query | Array(String) | O | DB 인스턴스 아이디 | Min:1, Max: 20 |
 | metricName | Query | Enum | O | 통계 항목(Metric) 이름 | |
@@ -55,30 +55,47 @@ GET /rds/api/v1.0/appkeys/{appkey}/monitoring/metric-statistics
 | from | Query | Datetime | O | 조회 시작일시 | |
 | to | Query | Datetime | O | 조회 종료일시 | |
 
+- period
+
+| Period | 조회 주기 | 데이버 보관 주기 |
+|---|---| --- |
+| `ONE_MINUTE` | 1분 | 7일 |
+| `TEN_MINUTES` | 10분 | 60일 |
+| `ONE_HOUR` | 1시간 | 1년 |
+| `SIX_HOURS` | 6시간 | 5년 |
+| `ONE_DAY` | 1일 | 5년 |
+
+- statisticsType
+
+| StatisticsType | 설명 |
+|---|---|
+| `MAX` | 조회 주기 내 최댓값 |
+| `AVERAGE` | 조회 주기 내 평균값 |
+
 #### 응답
 
 ```json
 {
-"metricStatistics" : [
-{
-"instanceId" : "72b5f839-9faf-4243-9410-27072656caa3",
-"metrics" : [
-{
-"metricName" : "CPU_USAGE",
-"unit" : "percent",
-"dataList" : [
-{
-"datetime" : "2020-08-06T13:30:00.000+0900",
-"value" : 10
-},
-{
-"datetime" : "2020-08-06T13:31:00.000+0900",
-"value" : 15
-}
-]
-}
-]
-}
-]
+  "metricStatistics": [
+    {
+      "instanceId": "72b5f839-9faf-4243-9410-27072656caa3",
+      "metrics": [
+        {
+          "metricName": "CPU_USAGE",
+          "unit": "percent",
+          "dataList": [
+            {
+              "datetime": "2020-08-06T13:30:00.000+0900",
+              "value": 10
+            },
+            {
+              "datetime": "2020-08-06T13:31:00.000+0900",
+              "value": 15
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
