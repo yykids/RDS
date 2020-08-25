@@ -39,7 +39,7 @@ GET /rds/api/v1.0/appkeys/{appkey}/monitoring/metrics
 }
 ```
 
-### 모니터링 데이터 조회
+### 통계 정보 조회
 
 - 일정 주기마다 수집된 통계 정보들을 조회합니다.
 
