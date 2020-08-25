@@ -101,7 +101,7 @@
 
 ### Flavor
 
-* TOAST Cloud Compute & Network 상품에서 제공하는 모든 사양으로 DB 인스턴스를 생성 할 수 있습니다.
+* TOAST Cloud Compute & Network 상품에서 제공하는 일부 사양으로 DB 인스턴스를 생성 할 수 있습니다.
 
 ### 백업
 
