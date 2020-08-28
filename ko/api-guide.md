@@ -10,7 +10,7 @@
 
 ### Metric 조회
 
-- 통계 정보 조회에 필요한 통계 항목(Metric)을 조회합니다.
+- 통계 정보 조회에 필요한 통계 항목(metric)을 조회합니다.
 
 ```
 GET /rds/api/v1.0/appkeys/{appkey}/monitoring/metrics
@@ -52,16 +52,16 @@ GET /rds/api/v1.0/appkeys/{appkey}/monitoring/metric-statistics
 | 이름 | 종류 | 형식 | 필수 | 설명 | 제약 사항 |
 |---|---|---|---|---|---|
 | appkey | URL | String | O | 상품 Appkey 또는 프로젝트 통합 Appkey | |
-| instanceId | Query | Array | O | DB 인스턴스 아이디 리스트 | Min:1, Max: 20 |
-| metricName | Query | Enum | O | 통계 항목(Metric) 이름 | |
+| instanceId | Query | Array | O | DB 인스턴스 ID 목록 | Min:1, Max: 20 |
+| metricName | Query | Enum | O | 통계 항목(metric) 이름 | |
 | period | Query | Enum | O | 조회 주기 | |
 | statisticsType | Query | Enum | O | 통계 타입 | |
-| from | Query | Datetime | O | 조회 시작일시 | |
-| to | Query | Datetime | O | 조회 종료일시 | |
+| from | Query | Datetime | O | 시작 일시 | |
+| to | Query | Datetime | O | 종료 일시 | |
 
 - period
 
-| Period | 조회 주기 | 데이버 보관 주기 |
+| Period | 조회 주기 | 데이터 보관 주기 |
 |---|---| --- |
 | `ONE_MINUTE` | 1분 | 7일 |
 | `TEN_MINUTES` | 10분 | 60일 |
