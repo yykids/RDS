@@ -1,2 +1,2 @@
-# RDS
-RDS
+# RDS for MySQL
+RDS for MySQL
