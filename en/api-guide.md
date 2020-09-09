@@ -57,8 +57,8 @@ GET /rds/api/v1.0/appkeys/{appkey}/monitoring/metric-statistics
 | metricName | Query | Enum | O | 통계 항목(metric) 이름 | |
 | period | Query | Enum | O | 조회 주기 | |
 | statisticsType | Query | Enum | O | 통계 타입 | |
-| from | Query | Datetime | O | 시작 일시 | |
-| to | Query | Datetime | O | 종료 일시 | |
+| from | Query | Datetime | O | 시작 일시 | yyyy-MM-dd HH:mm:ss |
+| to | Query | Datetime | O | 종료 일시 | yyyy-MM-dd HH:mm:ss |
 
 - period
 

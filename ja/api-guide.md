@@ -57,8 +57,8 @@ GET /rds/api/v1.0/appkeys/{appkey}/monitoring/metric-statistics
 | metricName | Query | Enum | O | 統計項目(metric)名前 | |
 | period | Query | Enum | O | 照会周期 | |
 | statisticsType | Query | Enum | O | 統計タイプ | |
-| from | Query | Datetime | O | 開始日時 | |
-| to | Query | Datetime | O | 終了日時 | |
+| from | Query | Datetime | O | 開始日時 | yyyy-MM-dd HH:mm:ss |
+| to | Query | Datetime | O | 終了日時 | yyyy-MM-dd HH:mm:ss |
 
 - period
 
