@@ -84,13 +84,12 @@ Below is an example of access to MySQL Workbench.
 
 ### High Availability 
 
-* When failure measures are taken for high-availability instance, the new master instance does not inherit the backup of the existing master instance.
 * Measures can be taken against failure which occurs when a candidate master is created at a different availability zone.
 * To restart a highly available instance, select [Restart by Taking Measures against Failure] to replace the master with the candidate master.
 * For those instances using high availability, access information does not change with partial changes in option, but the master and the candidate master instances may be interchanged.
-* 장애가 발생해 고가용성 인스턴스에 장애 조치가 수행됐을 때, 변경된 새 Master 인스턴스는 기존 Master 인스턴스의 백업을 승계하지 않습니다.
+* With a failover for high availability instance, the new master instance does not inherit the backup of the existing master instance.
 
-> [참고] 고가용성 인스턴스 사용 시, MySQL 쿼리문을 사용해 다른 인스턴스 또는 외부 MySQL의 Master로부터 강제로 복제하도록 설정하면 고가용성 및 일부 기능들이 정상적으로 동작하지 않습니다.
+> [Note] For high availability instances, use MySQL query statement to force replication of other instances or master of external MySQL, and then high availability and some features do not operate.    
 
 #### Constraints 
 
@@ -130,7 +129,7 @@ Below is an example of access to MySQL Workbench.
     Even if a backup is not complete within duration, the backup is not closed. 
 * Auto backups are deleted along with the original instances.
 
-> [참고] MySQL 5.7 이상에서는 백업 중에 인덱스를 생성하거나 다시 빌드하면 백업에 실패합니다.
+> [Note] For MySQL 5.7 or higher, creating or building an index again during backup causes failure in the backup.   
 
 #### Manual Backups 
 
