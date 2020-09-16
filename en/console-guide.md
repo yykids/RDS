@@ -88,8 +88,11 @@ Below is an example of access to MySQL Workbench.
 * Measures can be taken against failure which occurs when a candidate master is created at a different availability zone.
 * To restart a highly available instance, select [Restart by Taking Measures against Failure] to replace the master with the candidate master.
 * For those instances using high availability, access information does not change with partial changes in option, but the master and the candidate master instances may be interchanged.
+* 장애가 발생해 고가용성 인스턴스에 장애 조치가 수행됐을 때, 변경된 새 Master 인스턴스는 기존 Master 인스턴스의 백업을 승계하지 않습니다.
 
-#### Restraints 
+> [참고] 고가용성 인스턴스 사용 시, MySQL 쿼리문을 사용해 다른 인스턴스 또는 외부 MySQL의 Master로부터 강제로 복제하도록 설정하면 고가용성 및 일부 기능들이 정상적으로 동작하지 않습니다.
+
+#### Constraints 
 
 * Highly available instances are ensured for the initial one-time measure against failure. If a measure is taken against failure, the candidate master instance is changed into a general master for which high availability is not enabled.
 * The newly changed master instance inherits a domain allowed to access the existing master instance.
@@ -127,6 +130,8 @@ Below is an example of access to MySQL Workbench.
     Even if a backup is not complete within duration, the backup is not closed. 
 * Auto backups are deleted along with the original instances.
 
+> [참고] MySQL 5.7 이상에서는 백업 중에 인덱스를 생성하거나 다시 빌드하면 백업에 실패합니다.
+
 #### Manual Backups 
 
 * Manual backups are always available, except auto backups. 
@@ -155,7 +160,7 @@ Below is an example of access to MySQL Workbench.
 > [Note] While replication is underway, object storage volume may be incurred as much as the size of a binary log file.
 > [Note] When replication is completed, the Read Only Slave rule is added to the access rule of the master instance.
 
-#### Restraints 
+#### Constraints 
 
 * One original instance can create up to 5 replicas. 
 * Further replicas of a replica cannot be created. 
@@ -195,7 +200,7 @@ Below is an example of access to MySQL Workbench.
 
 > [For Reference] Since encryption is performed in real time, performance may be degraded for database instances.
 
-#### Restrictions 
+#### Constraints 
 
 * Database file encryption cannot be enabled for the restoration or replication of instances, for which database file encryption is not enabled.
 * Database file encryption cannot be disabled for the restoration or replication of instances, for which database file encryption is enabled.
