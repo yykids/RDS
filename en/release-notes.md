@@ -1,36 +1,36 @@
 ## Database > RDS for MySQL > Release Notes
 
-### 2020. 09. 22.
+### September 22, 2020
 
-#### 기능 추가
+#### More Features
 
-- 한국(평촌) 리전 오픈
+- New region opened in Korea (Pyeongchon) 
 
-### 2020. 09. 15.
+### September 15, 2020
 
-#### 기능 추가
+#### More Features 
 
-- 모니터링 API 지원
+- Supports Monitoring API 
 
-### 2020. 08. 11.
+### August 11, 2020
 
-#### 버그 수정
+#### Bug Fixes
 
-- 사용자 VPC 서브넷이 없을 경우, 이상한 서브넷이 목록에 나타나는 현상 수정
+- Fixed an issue in which an invalid subnet appears on the list when user VPC subnet is unavailable 
 
-### 2020. 07. 14.
+### July 14, 2020
 
-#### 기능 추가
+#### More Features 
 
-- MySQL 8.0.18 버전을 추가 지원
+- Further supports MySQL 8.0.18  
 
-### Dec. 10, 2019
+### December 10, 2019
 
 #### More Features
 
 - Added the feature of database file encryption (Korea Region)
 
-### Nov. 12, 2019 
+### November 12, 2019 
 
 #### Feature Updates
 
@@ -40,7 +40,7 @@
 
 - Fixed infrequent backup failures 
 
-### Sept. 24, 2019 
+### September 24, 2019 
 
 #### Feature Updates 
 
