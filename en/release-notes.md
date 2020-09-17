@@ -102,111 +102,111 @@
 - Fixed instances, which were sometimes unavailable to be deleted while they were being created
 - Fixed the issue in which data volume was not properly changed when data storage was full
 
-### 2019.03.12
+### March 12, 2019 
 
-#### 기능 개선
+#### Feature Updates 
 
-- 의미가 모호하고 보기 불편한 에러 메시지 개선
-- 콘솔에서 transaction-isolation 값을 수정 할 수 있도록 개선
+- Updated error messages that are vague with unpleasant looks. 
+- Updated to allow modifying transaction-isolation on the console 
 
-#### 버그 수정
+#### Bug Fixes
 
-- 1TB 의 DB 의 백업 시간이 하루 이상 걸릴 수 있는 가능성 제거
+- Removed the probability of long backup time which may take more than a day for 1TB database
 
-### 2019.02.26
+### February 26, 2019 
 
-#### 기능 추가
+#### More Features 
 
-- 인스턴스 데이터 저장소로 SSD 볼륨 사용 기능 추가.
+- Added the feature of SSD volume as storage for instance data  
 
-#### 기능 개선
+#### Feature Updates 
 
-- Notification 수신 대상을 프로젝트 멤버로 설정하도록 기능 개선.
-- x1, u2 flavor 사용 가능 기능 개선.
+- Updated to set recipients of notification from project members 
+- Updated features for x1, u2 flavor 
 
-### 2019.01.29
+### January 29, 2019
 
-#### 기능 개선
+#### Feature Updates
 
-- 인스턴스 볼륨 사이즈 최대값 1000G으로 변경
+- Changed the maximum instance volume to 1000G 
 
-### 2018.12.14
+### December 14, 2018
 
-#### 버그 수정
+#### Bug Fixes 
 
-- r2.c8m64 flavor 미노출 수정
-- general log 안보이는 현상 수정
-- VPC Subnet 선택 버그 수정
+- Fixed failed exposure of r2.c8m64  
+- Fixed general logs that are not visible 
+- Fixed bugs in the VPC subnet selection 
 
-### 2018.12.11
+### December 11, 2018 
 
-#### 기능 개선
+#### Feature Updates 
 
-- Peering 기능 제거
-- 사용자 VPC Subnet을 이용한 네트워크 통신 방식으로 기능 개선
+- Removed the peering feature 
+- Feature updated to the method of network communication by using user VPC subnet  
 
-### 2018.10.23
+### October 23, 2018 
 
-#### 기능 개선
+#### Feature Updates 
 
-- 인스턴스 생성/복원/복제 시 입력 항목 설명문구 노출
-- mysql transaction_isolation 옵션 노출
+- Shows description message for input items when instance is created/restored/replicated 
+- Shows the mysql transaction_isolation option 
 
-### 2018.10.16
+### October 16, 2018 
 
-#### 기능 추가
+#### More Features 
 
-- 인스턴스 Flavor 변경 기능 추가
-- 인스턴스 Storage 확장 기능 추가
+- Added the feature of changing instance flavor 
+- Added the feature of extending instance storage 
 
-### 2018.08.28
+### August 28, 2018
 
-#### 기능 추가
+#### More Features 
 
-- Binary Log 파일 삭제을 통한 인스턴스 용량 확보 기능 추가
+- Allows to secure instance volume by deleting binary log files 
 
-### 2018.07.24
+### July 24, 2018
 
-#### 기능 추가
+#### More Features
 
-- MySQL 5.7.15 버전을 추가 지원
+- Also supports MySQL 5.7.15 
 
-#### 버그 수정
+#### Bug Fixes
 
-- MySQL 5.7.19 버전 인스턴스 생성 시, floating ip 를 붙이지 않으면 생성하지 못하는 현상 수정
-- 특정 상황에서 자동 백업의 시간이 평소의 2배 소요되는 현상 수정
+- Fixed an issue in which an instance of the MySQL 5.7.19 version cannot be created, without floating IP 
+- Fixed auto backups at particular situations, in which it takes twice the usual time 
 
-### 2018.05.29
+### May 29, 2018
 
-#### 기능 추가
+#### More Features
 
-- MySQL 5.7 버전 신규 지원
+- Newly supports MySQL 5.7 
 
-### 2018.04.24
+### April 24, 2018
 
-#### 기능 개선
+#### Feature Updates
 
-- master의 port 변경 시, read only slave의 master 접속 정보 자동 변경
-- 백업 후, 불필요하게 남는 로그 삭제
+- With port change of the master, the master access information is automatically changed for read only slave
+- Delete unnecessary logs after backup 
 
-#### 버그 수정
+#### Bug Fixes
 
-- 검색결과 페이지 > 인스턴스 생성 후 페이지 이동 시도 시, 검색 결과 페이지로 이동되는 현상 수정
-- 비밀번호 확인란을 공백으로 인스턴스 생성 시도 시 경고문구가 뜨지 않는 현상 수정
+- Fixed pagination, in which Search Result > Create instance takes you to the search result page 
+- Fixed the missing of a warning sign when it is tried to create an instance with Confirm Password left in blank 
 
-### 2018.03.22
+### March 22, 2018 
 
-#### 버그 수정
+#### Bug Fixes
 
-- 백업 보관 기관 '없음'으로 변경 시, 일정 시간동안 리스트에서 보이는 현상 수정
-- 인스턴스 설정 수정을 하지 않았음에도 인스턴스의 상태가 변경 중으로 보이는 버그 수정
-- 인스턴스 재시작 시, QPS 가 음수로 보이는 현상 수정
-- Monitoring 화면에서 기간 설정 버튼 클릭 시, 화면의 날짜 및 시각의 갱신 없이 데이터만 갱신 되는 버그 수정
+- Fixed an issue in which backup retention period remains on the list, even after it was changed to 'N/A'
+- Fixed the bug in which instance status shows Changing, even without instance setting updated 
+- Fixed an issue in which QPS shows as negative number when an instance restarts 
+- Fixed the bug in which only data is updated without date or time updates, at the click of Period Setting on the Monitoring page 
 
-### 2018.02.22
+### February 22, 2018 
 
-#### 신규 상품 출시
+#### New Releases 
 
-- TOAST Cloud Relational Database Service (RDS) 는 Relational Database 를 클라우드 환경에서 제공하는 상품입니다.
-- 복잡한 설정 없이 Relational Database 사용할 수 있습니다.
-- MySQL 5.6.33 버전을 제공합니다.
+- TOAST Cloud Relational Database Service (RDS) provides Relational Database in the cloud environment. 
+- No complicated configuration is required to enable relational database. 
+- Supports MySQL 5.6.33.  
