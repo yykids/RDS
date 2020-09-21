@@ -91,4 +91,71 @@ CHANGE MASTER TO master_host = '{rds_master_instance_floating_ip}', master_user=
 START SLAVE;
 ```
 
-* After original data of TOAST RDS instance is completely replicated in external database, close replication by using the STOP SLAVE command. 
+* After original data of TOAST RDS instance become same as the external database, replication is closed by using the STOP SLAVE command to the external database. 
+
+### Import by Replication 
+
+* External database can be imported to TOAST RDS by using replication. 
+* TOAST RDS must have the same or later version than that of the external database.  
+* Connect to an external MySQL instance to import data. 
+* Use the command as below to back up data from the exteranl MySQL instance. 
+* To import data from external MySQL instance (master)
+
+```
+mysqldump -h{master_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} --single-transaction --master-data=2 --routines --events --triggers --databases {database_name1, database_name2, ...} > {local_path_and_file_name}
+```
+
+* To import data from external MySQL instance (slave) 
+
+```
+mysqldump -h{slave_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} --single-transaction --dump-slave=2 --routines --events --triggers --databases {database_name1, database_name2, ...} > {local_path_and_file_name}
+```
+
+* Open the backup file to record MASTER_LOG_FILE and MASTER_LOG_POS from the footnote. 
+* Check if the client or computer has enough volume to get data backed up from TOAST RDS instance. 
+* Add below option to the my.cnf (or my.ini for Windows) file of the external database. 
+* For server-id, enter a different value from the server-id of DB Configuration of TOAST RDS instance. 
+
+```
+...
+[mysqld]
+...
+server-id={server_id}
+replicate-ignore-db=rds_maintenance
+...
+```
+
+* Restart external database. 
+* It takes more time to import from an external network. 
+* It is, therefore, recommended to create TOAST Image internally and copy and import backup files to TOAST. 
+* Enter backed up files to TOAST RDS by using the command as below. 
+* Since replication configuration does not support DNS, convert to IP before execution.  
+
+```
+mysql -h{rds_master_insance_floating_ip} -u{db_id} -p{db_password} --port={db_port} < {local_path_and_file_name}
+```
+
+* Create an account for replication from internal MySQL instance.  
+
+```
+mysql> CREATE USER 'user_id_for_replication'@'{external_db_host}' IDENTIFIED BY '<password_forreplication_user>';
+mysql> GRANT REPLICATION CLIENT, REPLICATION SLAVE ON *.* TO 'user_id_for_replication'@'{external_db_host}';
+```
+
+* By using the account information for replication, and MASTER_LOG_FILE and MSATER_LOG_POS that were previously recorded, execute the query to TOAST RDS like follows. 
+
+```
+mysql> call mysql.tcrds_repl_changemaster ('rds_master_instance_floating_ip',rds_master_instance_port,'user_id_for_replication','password_forreplication_user','MASTER_LOG_FILE',MASTER_LOG_POS );
+```
+
+* To start replication, execute the following procedure. 
+
+```
+mysql> call mysql.tcrds_repl_slave_start;
+```
+
+* When original data of TOAST RDS instance become same as the external database, close replication by using the command as below. 
+
+```
+mysql> call mysql.tcrds_repl_init();
+```

@@ -84,12 +84,14 @@ Below is an example of access to MySQL Workbench.
 
 ### High Availability 
 
-* When failure measures are taken for high-availability instance, the new master instance does not inherit the backup of the existing master instance.
 * Measures can be taken against failure which occurs when a candidate master is created at a different availability zone.
 * To restart a highly available instance, select [Restart by Taking Measures against Failure] to replace the master with the candidate master.
 * For those instances using high availability, access information does not change with partial changes in option, but the master and the candidate master instances may be interchanged.
+* With a failover for high availability instance, the new master instance does not inherit the backup of the existing master instance.
 
-#### Restraints 
+> [Note] For high availability instances, use MySQL query statement to force replication of other instances or master of external MySQL, and then high availability and some features do not operate.    
+
+#### Constraints 
 
 * Highly available instances are ensured for the initial one-time measure against failure. If a measure is taken against failure, the candidate master instance is changed into a general master for which high availability is not enabled.
 * The newly changed master instance inherits a domain allowed to access the existing master instance.
@@ -127,6 +129,8 @@ Below is an example of access to MySQL Workbench.
     Even if a backup is not complete within duration, the backup is not closed. 
 * Auto backups are deleted along with the original instances.
 
+> [Note] For MySQL 5.7 or higher, creating or building an index again during backup causes failure in the backup.   
+
 #### Manual Backups 
 
 * Manual backups are always available, except auto backups. 
@@ -155,7 +159,7 @@ Below is an example of access to MySQL Workbench.
 > [Note] While replication is underway, object storage volume may be incurred as much as the size of a binary log file.
 > [Note] When replication is completed, the Read Only Slave rule is added to the access rule of the master instance.
 
-#### Restraints 
+#### Constraints 
 
 * One original instance can create up to 5 replicas. 
 * Further replicas of a replica cannot be created. 
@@ -195,7 +199,7 @@ Below is an example of access to MySQL Workbench.
 
 > [For Reference] Since encryption is performed in real time, performance may be degraded for database instances.
 
-#### Restrictions 
+#### Constraints 
 
 * Database file encryption cannot be enabled for the restoration or replication of instances, for which database file encryption is not enabled.
 * Database file encryption cannot be disabled for the restoration or replication of instances, for which database file encryption is enabled.

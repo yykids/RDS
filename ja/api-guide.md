@@ -4,6 +4,7 @@
 | リージョン | エンドポイント |
 |---|---|
 | 韓国(パンギョ)リージョン | https://api-gw.cloud.toast.com/rds-for-mysql-kr1 |
+| 韓国(坪村)リージョン | https://api-gw.cloud.toast.com/rds-for-mysql-kr2 |
 | 日本リージョン | https://api-gw.cloud.toast.com/rds-for-mysql-jp1 |
 
 ## Monitoring
