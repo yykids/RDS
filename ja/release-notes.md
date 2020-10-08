@@ -1,5 +1,13 @@
 ## Database > RDS for MySQL > リリースノート
 
+### 2020. 10. 13.
+
+#### バグ修正
+
+- innodb_buffer_pool_sizeの値が意図した値に修正されない現象を修正
+- require_secure_transportの値がonの場合、ha candidate masterインスタンスの複製が失敗する現象を修正
+- 大容量インスタンスをバックアップする時、過度な時間遅延が発生する現象を修正
+
 ### 2020. 09. 22.
 
 #### 機能追加
