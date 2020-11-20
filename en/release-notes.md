@@ -1,12 +1,12 @@
 ## Database > RDS for MySQL > Release Notes
 
-### 2020. 10. 13.
+### October 13, 2020
 
-#### 버그 수정
+#### Bug Fixes 
 
-- innodb_buffer_pool_size 값이 의도한 값으로 수정되지 않는 현상 수정
-- require_secure_transport 값이 on일 경우 ha candidate master 인스턴스의 복제 실패 현상 수정
-- 대용량 인스턴스 백업 시 과도한 시간 지연 현상 수정
+- Fixed an issue in which innodb_buffer_pool_size cannot be modified as intended
+- Fixed failed copy of the ha candidate master instance, when the require_secure_transport is on
+- Fixed delays in the backup of large-scale instance
 
 ### September 22, 2020
 
