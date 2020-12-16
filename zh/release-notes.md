@@ -1,5 +1,12 @@
 ## Database > RDS for MySQL > Release Notes
 
+### 2021. 01. 15
+
+#### 기능 추가
+
+- 백업 상세 설정 창에서, 백업 수행 시에 FLUSH TABLES WITH READ LOCK 지연 대기 시간을 설정할 수 있도록 기능 추가.
+- Access 제어 설정 창에서, 접근 제어 방향(수신 / 송신) 설정할 수 있도록 기능 추가.
+
 ### 2020. 12. 15
 
 #### 기능 추가
