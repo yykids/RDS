@@ -39,6 +39,8 @@ Specify backup information on the **Backup & Access Control** page.
 ![rds_02_20210112](https://static.toastoven.net/prod_rds/21.01.12/rds_02_20210112.png)
 
 * Set auto backup and access control, and click **Next**. 
+* 쿼리 지연 대기 시간 : 백업 수행 시에 FLUSH TABLES WITH READ LOCK 지연 대기 시간을 설정할 수 있습니다. 
+  * 0 ~ 21600 사이 값으로 설정할 수 있습니다.
 * Backup Retention Period: Select more than a day, to allow auto backups. 
     Select **N/A**, and auto backup is not enabled. 
 * Backup Start Time: Auto backup starts at some point between start time and duration.  
