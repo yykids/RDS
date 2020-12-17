@@ -36,7 +36,7 @@ To use RDS for MySQL, a DB instance must be created first, in the following meth
 
 Specify backup information on the **Backup & Access Control** page. 
 
-![rds_02_20210112](https://static.toastoven.net/prod_rds/21.01.12/rds_02_20210112.png)
+![rds_02_20210112](https://static.toastoven.net/prod_rds/21.01.12/rds_02_20210112_en.png)
 
 * Set auto backup and access control, and click **Next**. 
 * 쿼리 지연 대기 시간 : 백업 수행 시에 FLUSH TABLES WITH READ LOCK 지연 대기 시간을 설정할 수 있습니다. 

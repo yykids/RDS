@@ -38,7 +38,7 @@ RDS for MysQLを使用するには、先にDBインスタンスを作成する�
 
 **バックアップ&アクセス制御** 画面でバックアップ情報を指定します。
 
-![rds_02_20210112](https://static.toastoven.net/prod_rds/21.01.12/rds_02_20210112.png)
+![rds_02_20210112](https://static.toastoven.net/prod_rds/21.01.12/rds_02_20210112_jp.png)
 
 * 自動バックアップおよびアクセス制御を設定した後、 **次へ** ボタンをクリックします。
 * 쿼리 지연 대기 시간 : 백업 수행 시에 FLUSH TABLES WITH READ LOCK 지연 대기 시간을 설정할 수 있습니다. 

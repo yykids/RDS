@@ -38,7 +38,7 @@
 
 在**备份&Access控制**界面中指定备份信息。
 
-![rds_02_20210112](https://static.toastoven.net/prod_rds/21.01.12/rds_02_20210112.png)
+![rds_02_20210112](https://static.toastoven.net/prod_rds/21.01.12/rds_02_20210112_zh.png)
 
 * 设置自动备份及访问控制后，单击**下一步**按钮。
 * 쿼리 지연 대기 시간 : 백업 수행 시에 FLUSH TABLES WITH READ LOCK 지연 대기 시간을 설정할 수 있습니다. 
