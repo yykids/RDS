@@ -39,7 +39,7 @@ Specify backup information on the **Backup & Access Control** page.
 ![rds_02_20210112](https://static.toastoven.net/prod_rds/21.01.12/rds_02_20210112_en.png)
 
 * Set auto backup and access control, and click **Next**. 
-* 쿼리 지연 대기 시간 : 백업 수행 시에 FLUSH TABLES WITH READ LOCK 지연 대기 시간을 설정할 수 있습니다. 
+* 쿼리 지연 대기 시간: 백업 수행 시에 FLUSH TABLES WITH READ LOCK 지연 대기 시간을 설정할 수 있습니다. 
   * 0 ~ 21600 사이 값으로 설정할 수 있습니다.
 * Backup Retention Period: Select more than a day, to allow auto backups. 
     Select **N/A**, and auto backup is not enabled. 
@@ -47,6 +47,7 @@ Specify backup information on the **Backup & Access Control** page.
     Duration refers to time when backup starts: but, not that backup ends within duration.  
 * User Access Control: Enter accessible users to DB instance in the CIDR format. 
     Unregistered IPs for user access control are not accessible. 
+    접근 제어 시, 방향 설정에서 `수신/송신`에 대해 각각 허용 여부를 선택합니다.
 
 Values can be changed on DB Configuration. 
 
