@@ -24,6 +24,8 @@ To use RDS for MySQL, a DB instance must be created first, in the following meth
         * Between 20GB and 2,000GB  
     * Availability Zone: Select an area where DB instance is to be created.
     * High Availability: To create database instances, the candidate master is created at a different availability zone from the master.
+    * Ping Interval : 고가용성 사용 시, Master 인스턴스 상태를 확인하는 시간 간격을 설정합니다. 4회 실패 시 장애로 식별합니다.
+        * 1초 ~ 600초 사이로 설정할 수 있습니다.
     * Database File Encryption: User data files and backup files are encrypted.
     * Default Alarm: Register alarms for pre-defined events of a database instance.
       * To enable default alarm, a recipient group must be selected.
