@@ -1,17 +1,17 @@
 ## Database > RDS for MySQL > Release Notes
 
-### 2020. 12. 15
+### December 15, 2020
 
-#### 기능 추가
+#### More Features
 
-- --ftwrl-wait-timeout 옵션 값을 사용자가 설정 할 수 있도록 기능 추가
+- Added a function that enables users to set the --ftwrl-wait-timeout option value
 
-### 2020. 11. 10
+### November 10, 2020
 
-#### 버그 수정
+#### Bug Fixes
 
-- 간헐적으로 자동 백업 생성 실패 현상 수정
-- 간헉적으로 기간 만료된 자동 백업 삭제 실패 현상 수정
+- Fixed the issue where automatic backup generation occasionally fails
+- Fixed the issue where automatic deletion of expired backup occasionally fails
 
 ### October 13, 2020
 
