@@ -1,6 +1,6 @@
 ## Database > RDS for MySQL > Release Notes
 
-### 2021. 01. 15.
+### 2021. 01. 19.
 
 #### 기능 추가
 
