@@ -1,27 +1,25 @@
 ## Database > RDS for MySQL > Release Notes
 
-### 2021. 01. 19.
+### January 19, 2021
+#### More Features
+- Added an option used to configure Ping Interval (the master instance checking interval) when using High Availability (HA).
+- Added a feature to pause/resume High Availability (HA)
+- Added a feature used to configure the access control direction (inbound/outbound) in the **Access Control Settings** dialog box
+- Changed so that t2.c1m1 Flavor cannot be created anymore.
+- Changed so that the existing instances created with t2.c1m1 Flavor can no longer be switched to High Availability (HA).
 
-#### 기능 추가
 
-- 고가용성(HA) 기능 사용 시, Ping Interval(Master 인스턴스 상태를 확인하는 시간 간격)을 설정할 수 있도록 기능 추가
-- 고가용성(HA) 일시 중지/다시 시작 기능 추가
-- **Access 제어 설정** 대화 상자에서, 접근 제어 방향(수신/송신)을 설정할 수 있도록 기능 추가
-- t2.c1m1 Flavor 인스턴스 생성 불가 변경.
-- t2.c1m1 Flavor로 기존에 생성한 일반 인스턴스의 경우, 고가용성으로 변경하지 못하도록 변경.
+### December 15, 2020
+#### More Features
 
-### 2020. 12. 15.
+- Added a function that enables users to set the --ftwrl-wait-timeout option value
 
-#### 기능 추가
 
-- --ftwrl-wait-timeout 옵션 값을 사용자가 설정할 수 있도록 기능 추가
+### November 10, 2020
+#### Bug fixes
+- Fixed the issue where automatic backup generation would occasionally fail
+- Fixed the issue where automatic deletion of expired backup would occasionally fail
 
-### 2020. 11. 10.
-
-#### 버그 수정
-
-- 간헐적으로 자동 백업 생성에 실패하는 현상 수정
-- 간헐적으로 기간이 만료된 자동 백업 삭제에 실패하는 현상 수정
 
 ### October 13, 2020
 
